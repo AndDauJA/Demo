@@ -13,7 +13,7 @@ CREATE TABLE measure (
 CREATE TABLE size (
   id serial PRIMARY KEY,
   value varchar(255),
-  measure_id varchar(255)
+  measure_id int
 );
 
 CREATE TABLE currency (
