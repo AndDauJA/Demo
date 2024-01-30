@@ -1,112 +1,112 @@
 CREATE TABLE vendor (
-  id serial PRIMARY KEY,
+  id bigint PRIMARY KEY AUTO_INCREMENT,
   url varchar(255),
   name varchar(255),
   description text
 );
 
 CREATE TABLE measure (
-  id serial PRIMARY KEY,
+  id bigint PRIMARY KEY AUTO_INCREMENT,
   value varchar(255)
 );
 
 CREATE TABLE size (
-  id serial PRIMARY KEY,
+  id bigint PRIMARY KEY AUTO_INCREMENT,
   value varchar(255),
-  measure_id int
+  measure_id bigint
 );
 
 CREATE TABLE currency (
-  id serial PRIMARY KEY,
+  id bigint PRIMARY KEY AUTO_INCREMENT,
   type varchar(255)
 );
 
 CREATE TABLE color (
-  id serial PRIMARY KEY,
+  id bigint PRIMARY KEY AUTO_INCREMENT,
   code varchar(255),
   name varchar(255)
 );
 
 CREATE TABLE brand (
-  id serial PRIMARY KEY,
+  id bigint PRIMARY KEY AUTO_INCREMENT,
   name varchar(255)
 );
 
 CREATE TABLE type (
-  id serial PRIMARY KEY,
+  id bigint PRIMARY KEY AUTO_INCREMENT,
   code varchar(255),
   name varchar(255)
 );
 
 CREATE TABLE gender (
-  id serial PRIMARY KEY,
+  id bigint PRIMARY KEY AUTO_INCREMENT,
   code varchar(255)
 );
 
 CREATE TABLE bike_frame (
-  id serial PRIMARY KEY,
+  id bigint PRIMARY KEY AUTO_INCREMENT,
   code varchar(255),
   name varchar(255)
 );
 
 CREATE TABLE helmet_type (
-  id serial PRIMARY KEY,
+  id bigint PRIMARY KEY AUTO_INCREMENT,
   code varchar(255),
   name varchar(255)
 );
 
 CREATE TABLE product (
-  id serial PRIMARY KEY,
+  id bigint PRIMARY KEY AUTO_INCREMENT,
   sku varchar(255),
   name varchar(255),
   description varchar(255),
-  brand_id integer,
-  vendor_id integer,
-  type_id integer,
+  brand_id bigint,
+  vendor_id bigint,
+  type_id bigint,
   price decimal,
-  currency_id integer,
-  rating_value integer,
+  currency_id bigint,
+  rating_value bigint,
   created_at timestamp,
   updated_at timestamp
 );
 
 CREATE TABLE product_images (
-  id serial PRIMARY KEY,
-  product_id integer,
+  id bigint PRIMARY KEY AUTO_INCREMENT,
+  product_id bigint,
   image_path varchar(255)
 );
 
 CREATE TABLE product_colors (
-  id serial PRIMARY KEY,
-  product_id integer,
-  color_id integer
+  id bigint PRIMARY KEY AUTO_INCREMENT,
+  product_id bigint,
+  color_id bigint
 );
 
 CREATE TABLE product_sizes (
-  id serial PRIMARY KEY,
-  product_id integer,
-  size_id integer
+  id bigint PRIMARY KEY AUTO_INCREMENT,
+  product_id bigint,
+  size_id bigint
 );
 
 CREATE TABLE product_genders (
-  id serial PRIMARY KEY,
-  product_id integer,
-  gender_id integer
+  id bigint PRIMARY KEY AUTO_INCREMENT,
+  product_id bigint,
+  gender_id bigint
 );
 
 CREATE TABLE bike (
-  id serial PRIMARY KEY,
-  frame_id integer
+  id bigint PRIMARY KEY AUTO_INCREMENT,
+  frame_id bigint
 );
 
 CREATE TABLE accessory (
-  id serial PRIMARY KEY,
+  id bigint PRIMARY KEY AUTO_INCREMENT,
   note varchar(255)
 );
 
 CREATE TABLE helmet (
-  id serial PRIMARY KEY,
-  helmet_type_id integer
+  id bigint PRIMARY KEY AUTO_INCREMENT,
+  helmet_type_id bigint
 );
 
 ALTER TABLE type COMMENT = 'bike, helmet, kit, accessory';
@@ -147,4 +147,4 @@ ALTER TABLE accessory ADD FOREIGN KEY (id) REFERENCES product (id);
 
 ALTER TABLE helmet ADD FOREIGN KEY (id) REFERENCES product (id);
 
-ALTER TABLE helmet_type ADD FOREIGN KEY (id) REFERENCES helmet (helmet_type_id);
+ALTER TABLE helmet ADD FOREIGN KEY (helmet_type_id) REFERENCES helmet_type (id);
