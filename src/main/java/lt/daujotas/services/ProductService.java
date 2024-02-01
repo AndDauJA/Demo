@@ -4,16 +4,21 @@ import lt.daujotas.dao.ProductDao;
 import lt.daujotas.entities.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
 
 
 @Service
-public class ServiceForProduct {
+public class ProductService {
 
 
     private final ProductDao productDao;
     @Autowired
-    public ServiceForProduct(ProductDao productDao) {
+    public ProductService(ProductDao productDao) {
         this.productDao = productDao;
     }
 
@@ -33,27 +38,31 @@ public class ServiceForProduct {
 //    }
 //
 //
-//    public List<ClientAccountInfo> getAllClients() {
-//        return clientDao.getAll();
-//    }
+    public List<Product> getAllProducts() {
+        return productDao.getAll();
+    }
 //
 //    public Optional<ClientAccountInfo> getClientByUUID(UUID id) {
 //        return clientDao.getClientByUUID(id);
 //    }
-//    //    public Optional<ClientAccountInfo> getClientByFirstName(String firstName) {
-////        return clientDao.getClientByFirstName(firstName);
-////    }
-//    public void deleteClientByUserName(String userName){
-//        clientDao.deleteByClientUserName(userName);
-//    }
+        public Page<Product> getProductByName(String name, Pageable pageable) {
+        return productDao.getProductByName(name, pageable);
+    }
+    public Page<Product> getProductsByDescription(String description, Pageable pageable) {
+        return productDao.getProductByDescription( description, pageable);
+    }
+
+    public void deleteProductById(int id){
+        productDao.deleteByProductId(id);
+    }
 //
 //    public void deleteClientByUUID(UUID id) {
 //        clientDao.deleteClientByUUID(id);
 //    }
 //
-//    //    public Page<ClientAccountInfo> getAllClientsPages(Pageable pageable) {
-////        return clientDao.getPage(pageable);
-////    }
+        public Page<Product> getAllClientsPages(Pageable pageable) {
+        return productDao.getPage(pageable);
+    }
 //    public Page<ClientDto> getAllClientsPages(Pageable pageable) {
 //        return clientDao.getPage(pageable);
 //    }
