@@ -28,53 +28,34 @@ public class SearchControler {
         this.productService = productService;
     }
 
+    @GetMapping("/searchdemo")
+    public String dataBAseViewForm(Model model,
+                                   @PageableDefault(size = 20, sort = {"name"}, direction = Sort.Direction.ASC) Pageable pageable,
+                                   @RequestParam(name = "name", required = false) String name,
+                                   @RequestParam(name = "description", required = false) String description) {
+        Page<Product> products;
 
-//    @GetMapping("/searchdemo")  //sitas turi sutapti su return
-//    public String dataBAseViewForm(Model model, @PageableDefault(size = 20,
-//            sort = {"name"}, direction = Sort.Direction.ASC) Pageable pageable,
-//                                   @RequestParam(name = "name", required = false) String name) {
-//        Page<Product> products;
-//
-//        if (name != null && !name.isEmpty()) {
-//            // Search by name
-//            products = productService.getProductByName(name, pageable);
-//        } else {
-//            // Fetch all products
-//            products = productService.getAllClientsPages(pageable);
-//        }
-//
-//        model.addAttribute("productList", products);
-//        model.addAttribute("searchedName", name); // Add searched name to highlight in the UI
-//        return "searchdemo";
-//    }
-@GetMapping("/searchdemo")
-public String dataBAseViewForm(Model model,
-                               @PageableDefault(size = 20, sort = {"name"}, direction = Sort.Direction.ASC) Pageable pageable,
-                               @RequestParam(name = "name", required = false) String name,
-                               @RequestParam(name = "description", required = false) String description) {
-    Page<Product> products;
+        if (name != null && !name.isEmpty()) {
+            // Step 1: Search by name
+            products = productService.getProductByName(name, pageable);
+            model.addAttribute("searchedName", name); // Add searched name to highlight in the UI
 
-    if (name != null && !name.isEmpty()) {
-        // Step 1: Search by name
-        products = productService.getProductByName(name, pageable);
-        model.addAttribute("searchedName", name); // Add searched name to highlight in the UI
-
-        if (description != null && !description.isEmpty()) {
-            // Step 2: Further filter by description if provided
-            products = filterProductsByDescription(products, description);
+            if (description != null && !description.isEmpty()) {
+                // Step 2: Further filter by description if provided
+                products = filterProductsByDescription(products, description);
+            }
+        } else if (description != null && !description.isEmpty()) {
+            // If name is not provided, search by description
+            products = productService.getProductsByDescription(description, pageable);
+            model.addAttribute("searchedDescription", description); // Add searched description to highlight in the UI
+        } else {
+            // Fetch all products if neither name nor description is provided
+            products = productService.getAllClientsPages(pageable);
         }
-    } else if (description != null && !description.isEmpty()) {
-        // If name is not provided, search by description
-        products = productService.getProductsByDescription(description, pageable);
-        model.addAttribute("searchedDescription", description); // Add searched description to highlight in the UI
-    } else {
-        // Fetch all products if neither name nor description is provided
-        products = productService.getAllClientsPages(pageable);
-    }
 
-    model.addAttribute("productList", products);
-    return "searchdemo";
-}
+        model.addAttribute("productList", products);
+        return "searchdemo";
+    }
 
     private Page<Product> filterProductsByDescription(Page<Product> products, String description) {
         // Filter the existing products by description
@@ -88,7 +69,7 @@ public String dataBAseViewForm(Model model,
 
     @Transactional
     @GetMapping("/searchdemo/{id}/delete")
-    public String deleteClient(@PathVariable int id ) {
+    public String deleteClient(@PathVariable int id) {
         productService.deleteProductById(id);
         return "redirect:/searchdemo";
     }

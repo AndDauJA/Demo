@@ -14,68 +14,77 @@
     <h1>Musu produktai</h1>
     <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
-            <!-- Initial search form by name -->
-            <form class="d-flex" id="nameSearchForm" th:action="@{/searchdemo}" method="get">
-                <input class="form-control me-2" type="search" placeholder="Search by Name" aria-label="Search" name="name">
-                <input type="hidden" name="description" th:value="${searchedDescription}">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
+            <div class="row">
+                <!-- Initial search form by name -->
+                <div class="col-md-6 mb-3">
+                <form id="nameSearchForm" th:action="@{/searchdemo}" method="get" class="flex-grow-1 me-2 input-group rounded">
+                    <input class="form-control me-2 rounded" type="search" placeholder="Search by Name" aria-label="Search"
+                           name="name">
+                    <input type="hidden" name="description" th:value="${searchedDescription}">
+                    <button class="btn btn-outline-success rounded" type="submit">Search</button>
+                </form>
+                </div>
 
-            <!-- Second search form by description (hidden initially) -->
-            <form class="d-flex" id="descriptionSearchForm" th:action="@{/searchdemo}" method="get" >
-                <input class="form-control me-2" type="search" placeholder="Search by Description" aria-label="Search" name="description">
-                <input type="hidden" name="name" th:value="${searchedName}">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
+                <!-- Second search form by description (hidden initially) -->
+                <div class="col-md-6  mb-3">
+                <form id="descriptionSearchForm" th:action="@{/searchdemo}" method="get" class="flex-grow-1 me-2 input-group rounded">
+                    <input class="form-control me-2 rounded" type="search" placeholder="Search by Description"
+                           aria-label="Search" name="description">
+                    <input type="hidden" name="name" th:value="${searchedName}">
+                    <button class="btn btn-outline-success rounded" type="submit">Search</button>
+                </form>
+                </div>
+            </div>
         </div>
+
     </nav>
     <!-- Table and pagination code remains the same -->
 </div>
 
-       <table class="table table table-striped">
+<table class="table table table-striped">
 
-        <thead>
-        <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Name</th>
-            <th scope="col">Descrioption</th>
-            <th scope="col">Brand Id</th>
-            <th scope="col">SKU</th>
-            <th scope="col">Price</th>
-            <th></th>
-        </tr>
-        </thead>
-        <tbody>
+    <thead>
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Descrioption</th>
+        <th scope="col">Brand Id</th>
+        <th scope="col">SKU</th>
+        <th scope="col">Price</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
 
-        <tr th:each="products, stat : ${productList}">
+    <tr th:each="products, stat : ${productList}">
 
-            <td th:text="${stat.count}">N/A</td>
+        <td th:text="${stat.count}">N/A</td>
 
-            <td th:text="${products.getName()}?: 'N/A'">N/A</td>
-            <td th:text="${products.getDescription()}?: 'N/A'">N/A</td>
-            <td th:text="${products.getBrandId()}?: 'N/A'">N/A</td>
-            <td th:text="${products.getSku()}?: 'N/A'">N/A</td>
-            <td th:text="${products.getPrice()}?: 'N/A'">N/A</td>
-            <!--        <td><a th:href="@{'/dbview/' + ${client.uuid != null ? client.uuid.toString() : ''} + '/delete'}">Delete</a></td>-->
-            <td><a th:if="${products.id != null}" th:href="@{'/searchdemo/' + ${products.id} + '/delete'}">Delete</a>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-    <nav class="d-flex justify-content-end" aria-label="Page navigation">
-        <ul class="pagination">
-            <li class="page-item" th:classappend="${!productList.hasPrevious() ? 'disabled' : ''}">
-                <a class="page-link" th:href="@{/searchdemo(page=${productList.number} - 1)}">Previous</a>
-            </li>
-            <li th:each="pageNumber : ${#numbers.sequence(0, productList.totalPages - 1)}"
-                th:classappend="${pageNumber == productList.number ? 'active' : ''}">
-                <a class="page-link" th:href="@{/searchdemo(page=${pageNumber})}" th:text="${pageNumber + 1}"></a>
-            </li>
-            <li class="page-item" th:classappend="${!productList.hasNext() ? 'disabled' : ''}">
-                <a class="page-link" th:href="@{/searchdemo(page=${productList.number} + 1)}">Next</a>
-            </li>
+        <td th:text="${products.getName()}?: 'N/A'">N/A</td>
+        <td th:text="${products.getDescription()}?: 'N/A'">N/A</td>
+        <td th:text="${products.getBrandId()}?: 'N/A'">N/A</td>
+        <td th:text="${products.getSku()}?: 'N/A'">N/A</td>
+        <td th:text="${products.getPrice()}?: 'N/A'">N/A</td>
+        <!--        <td><a th:href="@{'/dbview/' + ${client.uuid != null ? client.uuid.toString() : ''} + '/delete'}">Delete</a></td>-->
+        <td><a th:if="${products.id != null}" th:href="@{'/searchdemo/' + ${products.id} + '/delete'}">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<nav class="d-flex justify-content-end" aria-label="Page navigation">
+    <ul class="pagination">
+        <li class="page-item" th:classappend="${!productList.hasPrevious() ? 'disabled' : ''}">
+            <a class="page-link" th:href="@{/searchdemo(page=${productList.number} - 1)}">Previous</a>
+        </li>
+        <li th:each="pageNumber : ${#numbers.sequence(0, productList.totalPages - 1)}"
+            th:classappend="${pageNumber == productList.number ? 'active' : ''}">
+            <a class="page-link" th:href="@{/searchdemo(page=${pageNumber})}" th:text="${pageNumber + 1}"></a>
+        </li>
+        <li class="page-item" th:classappend="${!productList.hasNext() ? 'disabled' : ''}">
+            <a class="page-link" th:href="@{/searchdemo(page=${productList.number} + 1)}">Next</a>
+        </li>
 
-        </ul>
-    </nav>
+    </ul>
+</nav>
 </body>
 </html>
