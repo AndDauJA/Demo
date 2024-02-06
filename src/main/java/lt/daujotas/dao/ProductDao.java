@@ -9,15 +9,21 @@ import java.util.Optional;
 
 public interface ProductDao {
 
-    void save (Product product);
+    void save(Product product);
+
     Optional<Product> getProductById(int id);
+
     Page<Product> getProductByName(String name, Pageable pageable);
+
     Page<Product> getProductByDescription(String name, Pageable pageable);
+
+    Page<Product> getProductByCurrencyId(int currencyId, Pageable pageable);
 
 
     void update(Product product);
 
     List<Product> getAll();
+
     Page<Product> getPage(Pageable pageable);
 
     void deleteByProductId(int id);

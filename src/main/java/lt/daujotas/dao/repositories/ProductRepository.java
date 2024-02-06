@@ -12,6 +12,6 @@ import java.util.Optional;
 public interface ProductRepository extends JpaRepository<Product, String> {
     Page<Product> findByName(String name, Pageable pageable);
     Page<Product> findByDescription(String desription, Pageable pageable);
-//    Optional<Product> findProductByName (String name);
+    Page<Product> findProductsByCurrencyId (int currency, Pageable pageable);
     Optional<Product> findProductById (int id);
 }

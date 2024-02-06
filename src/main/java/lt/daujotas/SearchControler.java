@@ -32,10 +32,13 @@ public class SearchControler {
     public String dataBAseViewForm(Model model,
                                    @PageableDefault(size = 20, sort = {"name"}, direction = Sort.Direction.ASC) Pageable pageable,
                                    @RequestParam(name = "name", required = false) String name,
-                                   @RequestParam(name = "description", required = false) String description) {
+                                   @RequestParam(name = "description", required = false) String description,
+                                   @RequestParam(name = "currency", required = false) Integer currencyId) {
         Page<Product> products;
-
-        if (name != null && !name.isEmpty()) {
+        if (currencyId != null) {
+            // Step 1: Filter by currencies
+             products = productService.getProductByCurrencyId(currencyId, pageable);
+        } else if (name != null && !name.isEmpty()) {
             // Step 1: Search by name
             products = productService.getProductByName(name, pageable);
             model.addAttribute("searchedName", name); // Add searched name to highlight in the UI
@@ -57,6 +60,7 @@ public class SearchControler {
         return "searchdemo";
     }
 
+
     private Page<Product> filterProductsByDescription(Page<Product> products, String description) {
         // Filter the existing products by description
         List<Product> filteredProducts = products.getContent().stream()
@@ -65,6 +69,15 @@ public class SearchControler {
 
         return new PageImpl<>(filteredProducts, products.getPageable(), filteredProducts.size());
     }
+
+//    private Page<Product> filterProductsByCurrecnId(Page<Product> products, int currencyNo) {
+//        // Filter the existing products by description
+//        List<Product> filteredProductsByCurrency = products.getContent().stream()
+//                .filter(product -> product.getCurrencyId().compareTo(currencyNo)==0)
+//                .collect(Collectors.toList());
+//
+//        return new PageImpl<>(filteredProductsByCurrency, products.getPageable(), filteredProductsByCurrency.size());
+//    }
 
 
     @Transactional

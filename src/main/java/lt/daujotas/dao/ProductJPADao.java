@@ -37,6 +37,12 @@ public class ProductJPADao implements ProductDao {
     }
 
     @Override
+    public Page<Product> getProductByCurrencyId(int currencyId, Pageable pageable) {
+        return productRepository.findProductsByCurrencyId(currencyId,pageable);
+    }
+
+
+    @Override
     public void update(Product product) {
 
     }

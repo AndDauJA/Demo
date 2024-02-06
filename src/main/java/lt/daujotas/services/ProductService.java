@@ -67,5 +67,8 @@ public class ProductService {
 //        return clientDao.getPage(pageable);
 //    }
 
+    public Page<Product> getProductByCurrencyId(int currencyId, Pageable pageable) {
+        return productDao.getProductByCurrencyId(currencyId, pageable);
+    }
 
 }

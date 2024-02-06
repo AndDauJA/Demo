@@ -40,6 +40,25 @@
     </nav>
     <!-- Table and pagination code remains the same -->
 </div>
+<form id="currencyFilterForm" th:action="@{/searchdemo}" method="get">
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox" th:value="1">
+        <label class="form-check-label" for="usdCheckbox">USD (1)</label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="currency" id="eurCheckbox" th:value="2">
+        <label class="form-check-label" for="eurCheckbox">EUR (2)</label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="currency" id="jpyCheckbox" th:value="3">
+        <label class="form-check-label" for="jpyCheckbox">JPY (3)</label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="currency" id="cadCheckbox" th:value="4">
+        <label class="form-check-label" for="cadCheckbox">CAD (4)</label>
+    </div>
+    <button type="submit" class="btn btn-primary">Filter</button>
+</form>
 
 <table class="table table table-striped">
 
@@ -50,7 +69,7 @@
         <th scope="col">Descrioption</th>
         <th scope="col">Brand Id</th>
         <th scope="col">SKU</th>
-        <th scope="col">Price</th>
+        <th scope="col">Currency </th>
         <th></th>
     </tr>
     </thead>
@@ -64,7 +83,7 @@
         <td th:text="${products.getDescription()}?: 'N/A'">N/A</td>
         <td th:text="${products.getBrandId()}?: 'N/A'">N/A</td>
         <td th:text="${products.getSku()}?: 'N/A'">N/A</td>
-        <td th:text="${products.getPrice()}?: 'N/A'">N/A</td>
+        <td th:text="${products.getCurrencyId()}?: 'N/A'">N/A</td>
         <!--        <td><a th:href="@{'/dbview/' + ${client.uuid != null ? client.uuid.toString() : ''} + '/delete'}">Delete</a></td>-->
         <td><a th:if="${products.id != null}" th:href="@{'/searchdemo/' + ${products.id} + '/delete'}">Delete</a>
         </td>
@@ -86,5 +105,6 @@
 
     </ul>
 </nav>
+
 </body>
 </html>
