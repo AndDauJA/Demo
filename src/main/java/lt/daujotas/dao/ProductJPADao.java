@@ -22,9 +22,10 @@ public class ProductJPADao implements ProductDao {
     }
 
     @Override
-    public Optional<Product> getProductById(int id) {
-        return productRepository.findProductById(id);
+    public Optional<Product> getProductById(Long id) {
+        return Optional.empty();
     }
+
 
     @Override
     public Page<Product> getProductByName(String name,Pageable pageable) {
@@ -37,8 +38,13 @@ public class ProductJPADao implements ProductDao {
     }
 
     @Override
-    public Page<Product> getProductByCurrencyId(int currencyId, Pageable pageable) {
-        return productRepository.findProductsByCurrencyId(currencyId,pageable);
+    public Page<Product> getProductByCurrencyIds(List<Integer> currencyIds, Pageable pageable) {
+        return (Page<Product>) productRepository.findByCurrencyIdIn(currencyIds,pageable);
+    }
+
+    @Override
+    public Page<Product> getProductsByNameAndDescription(String name, String description, Pageable pageable) {
+        return productRepository.searchProductsByNameAndDescription(name, description,pageable);
     }
 
 
@@ -58,7 +64,7 @@ public class ProductJPADao implements ProductDao {
     }
 
     @Override
-    public void deleteByProductId(int id) {
+    public void deleteByProductId(Long id) {
         Optional<Product> product = productRepository.findProductById(id);
         product.ifPresent(productRepository::delete);
     }

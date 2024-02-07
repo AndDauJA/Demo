@@ -11,14 +11,15 @@ public interface ProductDao {
 
     void save(Product product);
 
-    Optional<Product> getProductById(int id);
+    Optional<Product> getProductById(Long id);
 
     Page<Product> getProductByName(String name, Pageable pageable);
 
     Page<Product> getProductByDescription(String name, Pageable pageable);
 
-    Page<Product> getProductByCurrencyId(int currencyId, Pageable pageable);
-
+//    Page<Product> getProductByCurrencyIds(List<Integer> currencyId, Pageable pageable);
+    Page<Product> getProductByCurrencyIds(List<Integer> currencyIds, Pageable pageable);
+    Page<Product> getProductsByNameAndDescription (String name, String description, Pageable pageable);
 
     void update(Product product);
 
@@ -26,6 +27,6 @@ public interface ProductDao {
 
     Page<Product> getPage(Pageable pageable);
 
-    void deleteByProductId(int id);
+    void deleteByProductId(Long id);
 
 }

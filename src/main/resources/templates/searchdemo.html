@@ -42,23 +42,24 @@
 </div>
 <form id="currencyFilterForm" th:action="@{/searchdemo}" method="get">
     <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox" th:value="1">
+        <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox" value="1">
         <label class="form-check-label" for="usdCheckbox">USD (1)</label>
     </div>
     <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="currency" id="eurCheckbox" th:value="2">
+        <input class="form-check-input" type="checkbox" name="currency" id="eurCheckbox" value="2">
         <label class="form-check-label" for="eurCheckbox">EUR (2)</label>
     </div>
     <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="currency" id="jpyCheckbox" th:value="3">
+        <input class="form-check-input" type="checkbox" name="currency" id="jpyCheckbox" value="3">
         <label class="form-check-label" for="jpyCheckbox">JPY (3)</label>
     </div>
     <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="currency" id="cadCheckbox" th:value="4">
+        <input class="form-check-input" type="checkbox" name="currency" id="cadCheckbox" value="4">
         <label class="form-check-label" for="cadCheckbox">CAD (4)</label>
     </div>
     <button type="submit" class="btn btn-primary">Filter</button>
 </form>
+
 
 <table class="table table table-striped">
 
