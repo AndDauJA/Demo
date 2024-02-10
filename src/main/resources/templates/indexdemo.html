@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo search</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="main-header">
+    <div class="container">
+        <div class="main-header-wrapper">
+            <div class="logo-wrapper">
+                <img src="DemoLogo.svg">
+            </div>
+
+            <nav class="navigation-wrapper">
+                <ul class="menu-list">
+                    <li class="meniu-item">
+                        <a class="menu-link" href="#">Clothing</a>
+                    </li>
+                    <li class="meniu-item">
+                        <a class="menu-link" href="#">Bikes</a>
+                    </li>
+                    <li class="meniu-item">
+                        <a class="menu-link" href="#">Wheels & Tyres</a>
+                    </li>
+                    <li class="meniu-item">
+                        <a class="menu-link" href="#">Bike parts</a>
+                    </li>
+                    <li class="meniu-item">
+                        <a class="menu-link" href="#">Footwear</a>
+                    </li>
+                    <li class="meniu-item">
+                        <a class="menu-link" href="#">Helmets & Protection</a>
+                    </li>
+                    <li class="meniu-item">
+                        <a class="menu-link" href="#">Accessories</a>
+                    </li>
+                </ul>
+                <div class="meniu-search">
+                    <form id="nameSearchForm" th:action="@{/searchdemo}" method="get" class="flex-grow-1 me-2 input-group rounded">
+                        <input class="form-control me-2 rounded" type="search" placeholder="Search by Name" aria-label="Search" name="name">
+                        <input type="hidden" name="description" th:value="${searchedDescription}">
+                        <button class="btn btn-outline-success rounded" type="submit">Search</button>
+                    </form>
+                </div>
+                <li class="menu-item">
+                    <a class="menu-link" href="#">EN</a>
+                </li>
+            </nav>
+        </div>
+    </div>
+</header>
+</body>
+</html>
