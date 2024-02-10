@@ -54,7 +54,7 @@ p {
 }
 
 .main-header {
-    background-color: rgba(134, 255, 0, 0.77);
+    background-color: rgba(13, 131, 182, 0.77);
 }
 
 .main-header-wrapper {
@@ -83,4 +83,7 @@ p {
     color: white;
     text-decoration: none;
     display: inline-block;
+}
+.menu-link:hover {
+    opacity: .8;
 }
