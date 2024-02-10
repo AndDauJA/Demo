@@ -3,13 +3,11 @@ package lt.daujotas.services;
 import lt.daujotas.dao.ProductDao;
 import lt.daujotas.entities.Product;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
-import java.util.Optional;
+
 
 
 @Service
@@ -50,9 +48,11 @@ public class ProductService {
     }
     public Page<Product> getProductsByDescription(String description, Pageable pageable) {
         return productDao.getProductByDescription( description, pageable);
+    }public Page<Product> getProductsByNameAndDescription(String name, String description, Pageable pageable) {
+        return productDao.getProductsByNameAndDescription( name, description, pageable);
     }
 
-    public void deleteProductById(int id){
+    public void deleteProductById(Long id){
         productDao.deleteByProductId(id);
     }
 //
@@ -66,6 +66,14 @@ public class ProductService {
 //    public Page<ClientDto> getAllClientsPages(Pageable pageable) {
 //        return clientDao.getPage(pageable);
 //    }
+
+    //    public Page<Product> getProductByCurrencyId(int currencyId, Pageable pageable) {
+//        return productDao.getProductByCurrencyId(currencyId, pageable);
+//    }
+
+    public Page<Product> getProductByCurrencyIds(List<Integer> currencyIds, Pageable pageable) {
+        return productDao.getProductByCurrencyIds(currencyIds, pageable);
+    }
 
 
 }
