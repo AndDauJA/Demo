@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Controller
@@ -34,36 +34,35 @@ public class SearchControler {
                                    @RequestParam(name = "name", required = false) String name,
                                    @RequestParam(name = "description", required = false) String description,
                                    @RequestParam(name = "currency", required = false) List<Integer> currencyIds) {
-        Page<Product> products;
-        // Step 1: Filter by currencies
-        if (currencyIds != null && !currencyIds.isEmpty()) {
 
+
+        Page<Product> products;
+
+        if (currencyIds != null && !currencyIds.isEmpty()) {
+            // Filtravimas pagal valiutas
             products = productService.getProductByCurrencyIds(currencyIds, pageable);
-        } else
-            // Step 2: Filter by name and description
-            if (name != null && !name.isEmpty()) {
-            // Step 1: Search by name
+        }
+        if (name != null && !name.isEmpty()) {
+            // Filtravimas pagal vardą
             products = productService.getProductByName(name, pageable);
-            model.addAttribute("searchedName", name); // Add searched name to highlight in the UI
+                        model.addAttribute("searchedName", name);
 
             if (description != null && !description.isEmpty()) {
-                // Step 2: Further filter by description if provided
+                // Papildomas filtravimas pagal aprašymą, jei nurodytas
                 products = filterProductsByDescription(products, description);
             }
         } else if (description != null && !description.isEmpty()) {
-            // If name is not provided, search by description
+            // Filtravimas pagal aprašymą
             products = productService.getProductsByDescription(description, pageable);
-            model.addAttribute("searchedDescription", description); // Add searched description to highlight in the UI
-        } else
-        {
-            // Fetch all products if neither name nor description is provided
+            model.addAttribute("searchedDescription", description);
+        } else {
+            // Grąžinami visi produktai
             products = productService.getAllClientsPages(pageable);
         }
 
         model.addAttribute("productList", products);
         return "searchdemo";
     }
-
 
     private Page<Product> filterProductsByDescription(Page<Product> products, String description) {
         // Filter the existing products by description
@@ -74,14 +73,14 @@ public class SearchControler {
         return new PageImpl<>(filteredProducts, products.getPageable(), filteredProducts.size());
     }
 
-//    private Page<Product> filterProductsByCurrecnId(Page<Product> products, int currencyNo) {
-//        // Filter the existing products by description
-//        List<Product> filteredProductsByCurrency = products.getContent().stream()
-//                .filter(product -> product.getCurrencyId().compareTo(currencyNo)==0)
-//                .collect(Collectors.toList());
-//
-//        return new PageImpl<>(filteredProductsByCurrency, products.getPageable(), filteredProductsByCurrency.size());
-//    }
+    private Page<Product> filterProductsByCurrecnId(Page<Product> products, int currencyNo) {
+        // Filter the existing products by description
+        List<Product> filteredProductsByCurrency = products.getContent().stream()
+                .filter(product -> product.getCurrencyId().compareTo(currencyNo)==0)
+                .collect(Collectors.toList());
+
+        return new PageImpl<>(filteredProductsByCurrency, products.getPageable(), filteredProductsByCurrency.size());
+    }
 
 
     @Transactional
