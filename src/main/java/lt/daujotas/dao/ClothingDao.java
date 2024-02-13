@@ -13,8 +13,8 @@ public interface ClothingDao {
     void save (Clothing clothing);
     Optional<Clothing> getClthingById(Long id);
 
-    Page<Clothing> getClothingByGender(String gender, Pageable pageable);
-    Page<Clothing> getClothingBySize(String size, Pageable pageable);
+    Page<Clothing> getClothingByGender(List<String> gender, Pageable pageable);
+    Page<Clothing> getClothingBySize(List<String> size, Pageable pageable);
     Page<Clothing> getClothingByColor(String color, Pageable pageable);
     Page<Clothing> getClothingByBrand (String brandName, Pageable pageable);
 

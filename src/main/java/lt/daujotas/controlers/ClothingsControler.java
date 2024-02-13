@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+import java.util.SimpleTimeZone;
 import java.util.stream.Collectors;
 
 
@@ -35,23 +36,21 @@ public class ClothingsControler {
     public String dataBAseViewForm(Model model,
                                    @PageableDefault(size = 20, sort = {"brand"}, direction = Sort.Direction.ASC) Pageable pageable,
                                    @RequestParam(name = "brand", required = false) String brand,
-                                   @RequestParam(name = "size", required = false) String size,
+                                   @RequestParam(name = "size", required = false) List<String> size,
                                    @RequestParam(name = "color", required = false) String color,
-                                   @RequestParam(name = "gender", required = false) String gender) {
+                                   @RequestParam(name = "gender", required = false) List<String> gender) {
 
 
         Page<Clothing> clothing;
-
+// Filtravimas pagal lyti
         if (gender != null && !gender.isEmpty()) {
-            // Filtravimas pagal valiutas
+
             clothing = clothingService.getProductByGender(gender, pageable);
-        }
-//        if (size != null && !name.isEmpty()) {
-//            // Filtravimas pagal vardą
-//            products = productService.getProductByName(name, pageable);
-//            model.addAttribute("searchedName", name);
-//
-//            if (description != null && !description.isEmpty()) {
+        } else if (size != null && !size.isEmpty()) {
+
+            clothing = clothingService.getProductsBySize(size, pageable);
+
+//           } else if (description != null && !description.isEmpty()) {
 //                // Papildomas filtravimas pagal aprašymą, jei nurodytas
 //                products = filterProductsByDescription(products, description);
 //            }
@@ -59,7 +58,7 @@ public class ClothingsControler {
 //            // Filtravimas pagal aprašymą
 //            products = productService.getProductsByDescription(description, pageable);
 //            model.addAttribute("searchedDescription", description);
-         else {
+        } else {
             // Grąžinami visi produktai
             clothing = clothingService.getAllClientsPages(pageable);
         }

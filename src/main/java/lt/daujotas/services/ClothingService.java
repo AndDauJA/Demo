@@ -35,12 +35,12 @@ public class ClothingService {
         return clothingDao.getAll();
     }
 
-    public Page<Clothing> getProductByGender(String gender, Pageable pageable) {
-        return clothingRepository.findByGender(gender, pageable);
+    public Page<Clothing> getProductByGender(List<String> genders, Pageable pageable) {
+        return clothingDao.getClothingByGender(genders, pageable);
     }
 
 
-    public Page<Clothing> getProductsBySize(String size, Pageable pageable) {
+    public Page<Clothing> getProductsBySize(List<String> size, Pageable pageable) {
         return clothingDao.getClothingBySize(size, pageable);
     }
 

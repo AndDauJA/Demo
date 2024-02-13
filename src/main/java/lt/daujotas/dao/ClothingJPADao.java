@@ -27,13 +27,13 @@ public class ClothingJPADao implements ClothingDao {
     }
 
     @Override
-    public Page<Clothing> getClothingByGender (String gender, Pageable pageable) {
-        return clothingRepository.findByGender(gender, pageable);
+    public Page<Clothing> getClothingByGender (List<String> gender, Pageable pageable) {
+        return  clothingRepository.findByGenderIn(gender, pageable);
     }
 
     @Override
-    public Page<Clothing> getClothingBySize(String size, Pageable pageable) {
-        return clothingRepository.findBySize(size, pageable);
+    public Page<Clothing> getClothingBySize(List<String> size, Pageable pageable) {
+        return clothingRepository.findBySizeIn(size, pageable);
     }
 
     @Override
