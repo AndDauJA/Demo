@@ -37,12 +37,12 @@ public class ClothingsControler {
                                    @PageableDefault(size = 20, sort = {"brand"}, direction = Sort.Direction.ASC) Pageable pageable,
                                    @RequestParam(name = "brand", required = false) String brand,
                                    @RequestParam(name = "size", required = false) List<String> size,
-                                   @RequestParam(name = "color", required = false) String color,
+                                   @RequestParam(name = "color", required = false) List<String> color,
                                    @RequestParam(name = "gender", required = false) List<String> gender) {
 
 
         Page<Clothing> clothing;
-// Filtravimas pagal lyti
+
         if (gender != null && !gender.isEmpty()) {
 
             clothing = clothingService.getProductByGender(gender, pageable);
@@ -50,16 +50,9 @@ public class ClothingsControler {
 
             clothing = clothingService.getProductsBySize(size, pageable);
 
-//           } else if (description != null && !description.isEmpty()) {
-//                // Papildomas filtravimas pagal aprašymą, jei nurodytas
-//                products = filterProductsByDescription(products, description);
-//            }
-//        } else if (description != null && !description.isEmpty()) {
-//            // Filtravimas pagal aprašymą
-//            products = productService.getProductsByDescription(description, pageable);
-//            model.addAttribute("searchedDescription", description);
+        } else if (color != null && !color.isEmpty()) {
+            clothing = clothingService.getProductsByColor(color, pageable);
         } else {
-            // Grąžinami visi produktai
             clothing = clothingService.getAllClientsPages(pageable);
         }
 

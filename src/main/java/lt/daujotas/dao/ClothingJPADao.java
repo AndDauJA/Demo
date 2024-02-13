@@ -37,8 +37,8 @@ public class ClothingJPADao implements ClothingDao {
     }
 
     @Override
-    public Page<Clothing> getClothingByColor(String color, Pageable pageable) {
-        return clothingRepository.findByColor(color, pageable);
+    public Page<Clothing> getClothingByColor(List<String> color, Pageable pageable) {
+        return clothingRepository.findByColorIn(color, pageable);
     }
 
     @Override

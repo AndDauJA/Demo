@@ -75,7 +75,7 @@
             <div class="col-md-6">
                 <div class="filter-wrapper">
                     <div class="filter-container">
-                        <form id="genderFilterForm" th:action="@{/clothing}" method="get">
+                        <form id="FilterForm" th:action="@{/clothing}" method="get">
                             <h2 class="container-selector">Gender</h2>
                             <ul class="clothing-options">
 
@@ -147,136 +147,101 @@
                                 </button>
 
                             </ul>
+                            <ul class="clothing-options">
+                                <h2 class="container-selector">Color</h2>
+                                <li class="cloth-size">
+                                    <input class="form-check-input color-filter-checkbox" type="checkbox" name="color"
+                                           id="Black"
+                                           value="Black" onclick="toggleColorFilterButton()">
+                                    <label class="form-check-label" for="Black">Black</label>
+                                </li>
+                                <li class="cloth-size">
+                                    <input class="form-check-input color-filter-checkbox" type="checkbox" name="color"
+                                           id="White"
+                                           value="White" onclick="toggleColorFilterButton()">
+                                    <label class="form-check-label" for="White">White</label>
+                                </li>
+                                <li class="cloth-size">
+                                    <input class="form-check-input color-filter-checkbox" type="checkbox" name="color"
+                                           id="Yellow"
+                                           value="Yellow" onclick="toggleColorFilterButton()">
+                                    <label class="form-check-label" for="Yellow">Yellow</label>
+                                </li>
+                                <li class="cloth-size">
+                                    <input class="form-check-input color-filter-checkbox" type="checkbox" name="color"
+                                           id="Red"
+                                           value="Red" onclick="toggleColorFilterButton()">
+                                    <label class="form-check-label" for="Red">Red</label>
+                                </li>
+                                <li class="cloth-size">
+                                    <input class="form-check-input color-filter-checkbox" type="checkbox" name="color"
+                                           id="Purple"
+                                           value="Purple" onclick="toggleColorFilterButton()">
+                                    <label class="form-check-label" for="Purple">Purple</label>
+                                </li>
+                                <li class="cloth-size">
+                                    <input class="form-check-input color-filter-checkbox" type="checkbox" name="color"
+                                           id="Pink"
+                                           value="Pink" onclick="toggleColorFilterButton()">
+                                    <label class="form-check-label" for="Pink">Pink</label>
+                                </li>
+                                <li class="cloth-size">
+                                    <input class="form-check-input color-filter-checkbox" type="checkbox" name="color"
+                                           id="Green"
+                                           value="Green" onclick="toggleColorFilterButton()">
+                                    <label class="form-check-label" for="Green">Green</label>
+                                </li>
+                                <li class="cloth-size">
+                                    <input class="form-check-input color-filter-checkbox" type="checkbox" name="color"
+                                           id="Gray"
+                                           value="Gray" onclick="toggleColorFilterButton()">
+                                    <label class="form-check-label" for="Gray">Gray</label>
+                                </li>
+                            </ul>
+                            <button type="submit" class="btn btn-primary" id="searchButtonColor" disabled>Filter
+                            </button>
+
+                            <ul class="clothing-options">
+                                <h2 class="container-selector">Brand</h2>
+                                <li class="cloth-size">
+                                    <input class="form-check-input brand-filter-checkbox" type="checkbox" name="Brand" id="Nike"
+                                           value="Nike" onclick="toggleBrandFilterButton()">
+                                    <label class="form-check-label" for="Nike">Nike</label>
+                                </li>
+                                <li class="cloth-size">
+                                    <input class="form-check-input brand-filter-checkbox" type="checkbox" name="Brand" id="Puma"
+                                           value="Puma" onclick="toggleBrandFilterButton()">
+                                    <label class="form-check-label" for="Puma">Puma</label>
+                                </li>
+                                <li class="cloth-size">
+                                    <input class="form-check-input brand-filter-checkbox" type="checkbox" name="Brand" id="Adidas"
+                                           value="Adidas" onclick="toggleBrandFilterButton()">
+                                    <label class="form-check-label" for="Adidas">Adidas</label>
+                                </li>
+                                <li class="cloth-size">
+                                    <input class="form-check-input brand-filter-checkbox" type="checkbox" name="Brand" id="Diesel"
+                                           value="Diesel" onclick="toggleBrandFilterButton()">
+                                    <label class="form-check-label" for="Diesel">Diesel</label>
+                                </li>
+                                <li class="cloth-size">
+                                    <input class="form-check-input brand-filter-checkbox" type="checkbox" name="Brand" id="Datch"
+                                           value="Datch" onclick="toggleBrandFilterButton()">
+                                    <label class="form-check-label" for="Datch">Datch</label>
+                                </li>
+                                <li class="cloth-size">
+                                    <input class="form-check-input brand-filter-checkbox" type="checkbox" name="Brand" id="Cross"
+                                           value="Cross" onclick="toggleBrandFilterButton()">
+                                    <label class="form-check-label" for="Cross">Cross</label>
+                                </li>
+                                <li class="cloth-size">
+                                    <input class="form-check-input brand-filter-checkbox" type="checkbox" name="Brand" id="Calvin_Klein"
+                                           value="Calvin_Klein" onclick="toggleBrandFilterButton()">
+                                    <label class="form-check-label" for="Calvin_Klein">Calvin Klein</label>
+                                </li>
+                            </ul>
+                            <button type="submit" class="btn btn-primary" id="searchButtonBrand" disabled>Filter
+                            </button>
                         </form>
-                        <ul class="clothing-options">
-                            <!--                                <h2 class="container-selector">Color</h2>-->
-                            <!--                                <nav class="navbar navbar-light bg-light">-->
-                            <!--                                    <div class="container-fluid">-->
-                            <!--                                        <div class="row">-->
-                            <!--                                            &lt;!&ndash; Initial search form by name &ndash;&gt;-->
-                            <!--                                            <div class="col-md-6 mb-3">-->
-                            <!--                                                <div class="color-search">-->
-                            <!--                                                    <form id="nameSearchForm3" th:action="@{/clothing}" method="get"-->
-                            <!--                                                          class="flex-grow-1 me-2 input-group rounded">-->
-                            <!--                                                        <input class="form-control me-2 rounded" type="search"-->
-                            <!--                                                               placeholder="Search by Name"-->
-                            <!--                                                               aria-label="Search" name="name">-->
-                            <!--                                                        <input type="hidden" name="description"-->
-                            <!--                                                               th:value="${searchedDescription}">-->
-                            <!--                                                        <button class="btn btn-outline-success rounded" type="submit">-->
-                            <!--                                                            Search-->
-                            <!--                                                        </button>-->
-                            <!--                                                    </form>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                        </div>-->
-                            <!--                                    </div>-->
-                            <!--                                </nav>-->
-
-                            <!--                                <li class="cloth-size">-->
-                            <!--                                    <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox9"-->
-                            <!--                                           value="1">-->
-                            <!--                                    <label class="form-check-label" for="usdCheckbox">Black (22)</label>-->
-                            <!--                                </li>-->
-                            <!--                                <li class="cloth-size">-->
-                            <!--                                    <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox10"-->
-                            <!--                                           value="1">-->
-                            <!--                                    <label class="form-check-label" for="usdCheckbox">White (5)</label>-->
-                            <!--                                </li>-->
-                            <!--                                <li class="cloth-size">-->
-                            <!--                                    <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox11"-->
-                            <!--                                           value="1">-->
-                            <!--                                    <label class="form-check-label" for="usdCheckbox">Yellow (1)</label>-->
-                            <!--                                </li>-->
-                            <!--                                <li class="cloth-size">-->
-                            <!--                                    <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox12"-->
-                            <!--                                           value="1">-->
-                            <!--                                    <label class="form-check-label" for="usdCheckbox">Red(11)</label>-->
-                            <!--                                </li>-->
-                            <!--                                <li class="cloth-size">-->
-                            <!--                                    <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox13"-->
-                            <!--                                           value="1">-->
-                            <!--                                    <label class="form-check-label" for="usdCheckbox">Purple (13)</label>-->
-                            <!--                                </li>-->
-                            <!--                                <li class="cloth-size">-->
-                            <!--                                    <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox14"-->
-                            <!--                                           value="1">-->
-                            <!--                                    <label class="form-check-label" for="usdCheckbox">Pink (12)</label>-->
-                            <!--                                </li>-->
-                            <!--                                <li class="cloth-size">-->
-                            <!--                                    <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox15"-->
-                            <!--                                           value="1">-->
-                            <!--                                    <label class="form-check-label" for="usdCheckbox">Green (1)</label>-->
-                            <!--                                </li>-->
-                            <!--                                <li class="cloth-size">-->
-                            <!--                                    <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox16"-->
-                            <!--                                           value="1">-->
-                            <!--                                    <label class="form-check-label" for="usdCheckbox">Gray (2)</label>-->
-                            <!--                                </li>-->
-                            <!--                            </ul>-->
-
-                            <!--                            <ul class="clothing-options">-->
-                            <!--                                <h2 class="container-selector">Brand</h2>-->
-                            <!--                                <nav class="navbar navbar-light bg-light">-->
-                            <!--                                    <div class="container-fluid">-->
-                            <!--                                        <div class="row">-->
-                            <!--                                            &lt;!&ndash; Initial search form by name &ndash;&gt;-->
-                            <!--                                            <div class="col-md-6 mb-3">-->
-                            <!--                                                <div class="brand-search">-->
-                            <!--                                                    <form id="nameSearchForm" th:action="@{/clothing}" method="get"-->
-                            <!--                                                          class="flex-grow-1 me-2 input-group rounded">-->
-                            <!--                                                        <input class="form-control me-2 rounded" type="search"-->
-                            <!--                                                               placeholder="Search by Name"-->
-                            <!--                                                               aria-label="Search" name="name">-->
-                            <!--                                                        <input type="hidden" name="description"-->
-                            <!--                                                               th:value="${searchedDescription}">-->
-                            <!--                                                        <button class="btn btn-outline-success rounded" type="submit">-->
-                            <!--                                                            Search-->
-                            <!--                                                        </button>-->
-                            <!--                                                    </form>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                        </div>-->
-                            <!--                                    </div>-->
-                            <!--                                </nav>-->
-
-                            <!--                                <li class="cloth-size">-->
-                            <!--                                    <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox17"-->
-                            <!--                                           value="1">-->
-                            <!--                                    <label class="form-check-label" for="usdCheckbox">Nike (111)</label>-->
-                            <!--                                </li>-->
-                            <!--                                <li class="cloth-size">-->
-                            <!--                                    <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox18"-->
-                            <!--                                           value="1">-->
-                            <!--                                    <label class="form-check-label" for="usdCheckbox">Puma (52)</label>-->
-                            <!--                                </li>-->
-                            <!--                                <li class="cloth-size">-->
-                            <!--                                    <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox19"-->
-                            <!--                                           value="1">-->
-                            <!--                                    <label class="form-check-label" for="usdCheckbox">Adidas (100)</label>-->
-                            <!--                                </li>-->
-                            <!--                                <li class="cloth-size">-->
-                            <!--                                    <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox20"-->
-                            <!--                                           value="1">-->
-                            <!--                                    <label class="form-check-label" for="usdCheckbox">Diesel (1)</label>-->
-                            <!--                                </li>-->
-                            <!--                                <li class="cloth-size">-->
-                            <!--                                    <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox21"-->
-                            <!--                                           value="1">-->
-                            <!--                                    <label class="form-check-label" for="usdCheckbox">Datch (2)</label>-->
-                            <!--                                </li>-->
-                            <!--                                <li class="cloth-size">-->
-                            <!--                                    <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox22"-->
-                            <!--                                           value="1">-->
-                            <!--                                    <label class="form-check-label" for="usdCheckbox">Cross (15)</label>-->
-                            <!--                                </li>-->
-                            <!--                                <li class="cloth-size">-->
-                            <!--                                    <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox23"-->
-                            <!--                                           value="1">-->
-                            <!--                                    <label class="form-check-label" for="usdCheckbox">Calvin Klein (15)</label>-->
-                            <!--                                </li>-->
-                        </ul>
-
                     </div>
                 </div>
             </div>
@@ -352,6 +317,16 @@
         searchButtonGender.disabled = checkedGenderCheckboxes.length < 1;
     }
 
+    function toggleColorFilterButton() {
+        const checkedGenderCheckboxes = document.querySelectorAll('.color-filter-checkbox:checked');
+        const searchButtonGender = document.getElementById('searchButtonColor');
+        searchButtonGender.disabled = checkedGenderCheckboxes.length < 1;
+    }
+    function toggleBrandFilterButton() {
+        const checkedGenderCheckboxes = document.querySelectorAll('.brand-filter-checkbox:checked');
+        const searchButtonGender = document.getElementById('searchButtonBrand');
+        searchButtonGender.disabled = checkedGenderCheckboxes.length < 1;
+    }
 
 </script>
 

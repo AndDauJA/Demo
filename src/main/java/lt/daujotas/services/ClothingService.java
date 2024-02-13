@@ -44,7 +44,7 @@ public class ClothingService {
         return clothingDao.getClothingBySize(size, pageable);
     }
 
-    public Page<Clothing> getProductsByColor(String color, Pageable pageable) {
+    public Page<Clothing> getProductsByColor(List<String> color, Pageable pageable) {
         return clothingDao.getClothingByColor(color, pageable);
     }
 

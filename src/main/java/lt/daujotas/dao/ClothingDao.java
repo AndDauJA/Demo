@@ -15,7 +15,7 @@ public interface ClothingDao {
 
     Page<Clothing> getClothingByGender(List<String> gender, Pageable pageable);
     Page<Clothing> getClothingBySize(List<String> size, Pageable pageable);
-    Page<Clothing> getClothingByColor(String color, Pageable pageable);
+    Page<Clothing> getClothingByColor(List<String> color, Pageable pageable);
     Page<Clothing> getClothingByBrand (String brandName, Pageable pageable);
 
 
