@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Clothing</title>
     <link rel="stylesheet" href="../static/css/style.css">
     <link rel="stylesheet" th:href="@{css/style.css}">
@@ -57,14 +56,6 @@
                             <button class="btn btn-outline-success rounded" type="submit">Search</button>
                         </form>
                     </div>
-                    <li class="menu-item">
-                        <a class="menu-link" href="#">EN</a>
-                    </li>
-                    <div id="header-user-login" class="col col-auto header-btn-w header-user-btn-w">
-                        <a href="#" title="Log in to your customer account">
-                            <span class="title">Log in</span>
-                        </a>
-                    </div>
                 </nav>
             </div>
 
@@ -75,173 +66,154 @@
             <div class="col-md-6">
                 <div class="filter-wrapper">
                     <div class="filter-container">
-                        <form id="FilterForm" th:action="@{/clothing}" method="get">
+                        <form id="genderFilterbox" th:action="@{/clothing}" method="get">
                             <h2 class="container-selector">Gender</h2>
                             <ul class="clothing-options">
 
                                 <li class="cloth-size">
-                                    <input class="form-check-input filter-checkbox" type="checkbox" name="gender"
-                                           id="male" value="male" onclick="toggleGenderFilterButton()">
+                                    <input class="form-check-input" type="checkbox" name="gender" id="male" value="male">
                                     <label class="form-check-label" for="male">Male</label>
                                 </li>
                                 <li class="cloth-size">
-                                    <input class="form-check-input filter-checkbox" type="checkbox" name="gender"
-                                           id="female"
-                                           value="female" onclick="toggleGenderFilterButton()">
-                                    <label class="form-check-label " for="female">Female</label>
+                                    <input class="form-check-input" type="checkbox" name="gender" id="female" value="female">
+                                    <label class="form-check-label" for="female">Female</label>
                                 </li>
                                 <li class="cloth-size">
-                                    <input class="form-check-input filter-checkbox" type="checkbox" name="gender"
-                                           id="kid" value="kid" onclick="toggleGenderFilterButton()">
+                                    <input class="form-check-input" type="checkbox" name="gender" id="kid" value="kid">
                                     <label class="form-check-label" for="kid">Kid</label>
                                 </li>
                             </ul>
-                            <button type="submit" class="btn btn-primary" id="searchButtonGender" disabled>Filter
-                            </button>
-
-                            <ul class="clothing-options">
-
-                                <h2 class="container-selector">Size</h2>
-
-                                <li class="cloth-size">
-                                    <input class="form-check-input size-filter-checkbox" type="checkbox" name="size"
-                                           id="XXS" value="XXS" onclick="toggleSizeFilterButton()">
-
-                                    <label class="form-check-label size-filter-checkbox" for="XXS">XXS</label>
-                                </li>
-                                <li class="cloth-size">
-                                    <input class="form-check-input size-filter-checkbox" type="checkbox" name="size"
-                                           id="XS" value="XS" onclick="toggleSizeFilterButton()">
-                                    <label class="form-check-label" for="XS">XS</label>
-                                </li>
-                                <li class="cloth-size">
-                                    <input class="form-check-input size-filter-checkbox" type="checkbox" name="size"
-                                           id="S" value="S" onclick="toggleSizeFilterButton()">
-                                    <label class="form-check-label" for="S">S</label>
-                                </li>
-                                <li class="cloth-size">
-                                    <input class="form-check-input size-filter-checkbox" type="checkbox" name="size"
-                                           id="M"
-                                           value="M" onclick="toggleSizeFilterButton()">
-                                    <label class="form-check-label" for="M">M</label>
-                                </li>
-                                <li class="cloth-size">
-                                    <input class="form-check-input size-filter-checkbox" type="checkbox" name="size"
-                                           id="L"
-                                           value="L" onclick="toggleSizeFilterButton()">
-                                    <label class="form-check-label" for="L">L</label>
-                                </li>
-                                <li class="cloth-size">
-                                    <input class="form-check-input size-filter-checkbox" type="checkbox" name="size"
-                                           id="XL"
-                                           value="XL" onclick="toggleSizeFilterButton()">
-                                    <label class="form-check-label" for="XL">XL</label>
-                                </li>
-                                <li class="cloth-size">
-                                    <input class="form-check-input size-filter-checkbox" type="checkbox" name="size"
-                                           id="XXL"
-                                           value="XXL" onclick="toggleSizeFilterButton()">
-                                    <label class="form-check-label" for="XXL">XXL</label>
-                                </li>
-                                <button type="submit" class="btn btn-primary" id="searchButtonSize" disabled>Filter
-                                </button>
-
-                            </ul>
-                            <ul class="clothing-options">
-                                <h2 class="container-selector">Color</h2>
-                                <li class="cloth-size">
-                                    <input class="form-check-input color-filter-checkbox" type="checkbox" name="color"
-                                           id="Black"
-                                           value="Black" onclick="toggleColorFilterButton()">
-                                    <label class="form-check-label" for="Black">Black</label>
-                                </li>
-                                <li class="cloth-size">
-                                    <input class="form-check-input color-filter-checkbox" type="checkbox" name="color"
-                                           id="White"
-                                           value="White" onclick="toggleColorFilterButton()">
-                                    <label class="form-check-label" for="White">White</label>
-                                </li>
-                                <li class="cloth-size">
-                                    <input class="form-check-input color-filter-checkbox" type="checkbox" name="color"
-                                           id="Yellow"
-                                           value="Yellow" onclick="toggleColorFilterButton()">
-                                    <label class="form-check-label" for="Yellow">Yellow</label>
-                                </li>
-                                <li class="cloth-size">
-                                    <input class="form-check-input color-filter-checkbox" type="checkbox" name="color"
-                                           id="Red"
-                                           value="Red" onclick="toggleColorFilterButton()">
-                                    <label class="form-check-label" for="Red">Red</label>
-                                </li>
-                                <li class="cloth-size">
-                                    <input class="form-check-input color-filter-checkbox" type="checkbox" name="color"
-                                           id="Purple"
-                                           value="Purple" onclick="toggleColorFilterButton()">
-                                    <label class="form-check-label" for="Purple">Purple</label>
-                                </li>
-                                <li class="cloth-size">
-                                    <input class="form-check-input color-filter-checkbox" type="checkbox" name="color"
-                                           id="Pink"
-                                           value="Pink" onclick="toggleColorFilterButton()">
-                                    <label class="form-check-label" for="Pink">Pink</label>
-                                </li>
-                                <li class="cloth-size">
-                                    <input class="form-check-input color-filter-checkbox" type="checkbox" name="color"
-                                           id="Green"
-                                           value="Green" onclick="toggleColorFilterButton()">
-                                    <label class="form-check-label" for="Green">Green</label>
-                                </li>
-                                <li class="cloth-size">
-                                    <input class="form-check-input color-filter-checkbox" type="checkbox" name="color"
-                                           id="Gray"
-                                           value="Gray" onclick="toggleColorFilterButton()">
-                                    <label class="form-check-label" for="Gray">Gray</label>
-                                </li>
-                            </ul>
-                            <button type="submit" class="btn btn-primary" id="searchButtonColor" disabled>Filter
-                            </button>
-
-                            <ul class="clothing-options">
-                                <h2 class="container-selector">Brand</h2>
-                                <li class="cloth-size">
-                                    <input class="form-check-input brand-filter-checkbox" type="checkbox" name="Brand" id="Nike"
-                                           value="Nike" onclick="toggleBrandFilterButton()">
-                                    <label class="form-check-label" for="Nike">Nike</label>
-                                </li>
-                                <li class="cloth-size">
-                                    <input class="form-check-input brand-filter-checkbox" type="checkbox" name="Brand" id="Puma"
-                                           value="Puma" onclick="toggleBrandFilterButton()">
-                                    <label class="form-check-label" for="Puma">Puma</label>
-                                </li>
-                                <li class="cloth-size">
-                                    <input class="form-check-input brand-filter-checkbox" type="checkbox" name="Brand" id="Adidas"
-                                           value="Adidas" onclick="toggleBrandFilterButton()">
-                                    <label class="form-check-label" for="Adidas">Adidas</label>
-                                </li>
-                                <li class="cloth-size">
-                                    <input class="form-check-input brand-filter-checkbox" type="checkbox" name="Brand" id="Diesel"
-                                           value="Diesel" onclick="toggleBrandFilterButton()">
-                                    <label class="form-check-label" for="Diesel">Diesel</label>
-                                </li>
-                                <li class="cloth-size">
-                                    <input class="form-check-input brand-filter-checkbox" type="checkbox" name="Brand" id="Datch"
-                                           value="Datch" onclick="toggleBrandFilterButton()">
-                                    <label class="form-check-label" for="Datch">Datch</label>
-                                </li>
-                                <li class="cloth-size">
-                                    <input class="form-check-input brand-filter-checkbox" type="checkbox" name="Brand" id="Cross"
-                                           value="Cross" onclick="toggleBrandFilterButton()">
-                                    <label class="form-check-label" for="Cross">Cross</label>
-                                </li>
-                                <li class="cloth-size">
-                                    <input class="form-check-input brand-filter-checkbox" type="checkbox" name="Brand" id="Calvin_Klein"
-                                           value="Calvin_Klein" onclick="toggleBrandFilterButton()">
-                                    <label class="form-check-label" for="Calvin_Klein">Calvin Klein</label>
-                                </li>
-                            </ul>
-                            <button type="submit" class="btn btn-primary" id="searchButtonBrand" disabled>Filter
-                            </button>
+                            <button type="submit" class="btn btn-primary">Filter</button>
                         </form>
+
+                        <ul class="clothing-options">
+                            <h2 class="container-selector">Size</h2>
+                            <li class="cloth-size">
+                                <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox"
+                                       value="1">
+                                <label class="form-check-label" for="usdCheckbox">XXS (1)</label>
+                            </li>
+                            <li class="cloth-size">
+                                <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox2"
+                                       value="1">
+                                <label class="form-check-label" for="usdCheckbox">XS (5)</label>
+                            </li>
+                            <li class="cloth-size">
+                                <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox3"
+                                       value="1">
+                                <label class="form-check-label" for="usdCheckbox">S (1)</label>
+                            </li>
+                            <li class="cloth-size">
+                                <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox4"
+                                       value="1">
+                                <label class="form-check-label" for="usdCheckbox">M (101)</label>
+                            </li>
+                            <li class="cloth-size">
+                                <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox5"
+                                       value="1">
+                                <label class="form-check-label" for="usdCheckbox">L (52)</label>
+                            </li>
+                            <li class="cloth-size">
+                                <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox6"
+                                       value="1">
+                                <label class="form-check-label" for="usdCheckbox">XL (15)</label>
+                            </li>
+                            <li class="cloth-size">
+                                <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox7"
+                                       value="1">
+                                <label class="form-check-label" for="usdCheckbox">XXL (10)</label>
+                            </li>
+                            <li class="cloth-size">
+                                <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox8"
+                                       value="1">
+                                <label class="form-check-label" for="usdCheckbox">XXL (1)</label>
+                            </li>
+                        </ul>
+
+                        <ul class="clothing-options">
+                            <h2 class="container-selector">Color</h2>
+
+                            <li class="cloth-size">
+                                <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox9"
+                                       value="1">
+                                <label class="form-check-label" for="usdCheckbox">Black (22)</label>
+                            </li>
+                            <li class="cloth-size">
+                                <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox10"
+                                       value="1">
+                                <label class="form-check-label" for="usdCheckbox">White (5)</label>
+                            </li>
+                            <li class="cloth-size">
+                                <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox11"
+                                       value="1">
+                                <label class="form-check-label" for="usdCheckbox">Yellow (1)</label>
+                            </li>
+                            <li class="cloth-size">
+                                <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox12"
+                                       value="1">
+                                <label class="form-check-label" for="usdCheckbox">Red(11)</label>
+                            </li>
+                            <li class="cloth-size">
+                                <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox13"
+                                       value="1">
+                                <label class="form-check-label" for="usdCheckbox">Purple (13)</label>
+                            </li>
+                            <li class="cloth-size">
+                                <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox14"
+                                       value="1">
+                                <label class="form-check-label" for="usdCheckbox">Pink (12)</label>
+                            </li>
+                            <li class="cloth-size">
+                                <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox15"
+                                       value="1">
+                                <label class="form-check-label" for="usdCheckbox">Green (1)</label>
+                            </li>
+                            <li class="cloth-size">
+                                <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox16"
+                                       value="1">
+                                <label class="form-check-label" for="usdCheckbox">Gray (2)</label>
+                            </li>
+                        </ul>
+
+                        <ul class="clothing-options">
+                            <h2 class="container-selector">Brand</h2>
+
+                            <li class="cloth-size">
+                                <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox17"
+                                       value="1">
+                                <label class="form-check-label" for="usdCheckbox">Nike (111)</label>
+                            </li>
+                            <li class="cloth-size">
+                                <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox18"
+                                       value="1">
+                                <label class="form-check-label" for="usdCheckbox">Puma (52)</label>
+                            </li>
+                            <li class="cloth-size">
+                                <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox19"
+                                       value="1">
+                                <label class="form-check-label" for="usdCheckbox">Adidas (100)</label>
+                            </li>
+                            <li class="cloth-size">
+                                <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox20"
+                                       value="1">
+                                <label class="form-check-label" for="usdCheckbox">Diesel (1)</label>
+                            </li>
+                            <li class="cloth-size">
+                                <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox21"
+                                       value="1">
+                                <label class="form-check-label" for="usdCheckbox">Datch (2)</label>
+                            </li>
+                            <li class="cloth-size">
+                                <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox22"
+                                       value="1">
+                                <label class="form-check-label" for="usdCheckbox">Cross (15)</label>
+                            </li>
+                            <li class="cloth-size">
+                                <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox23"
+                                       value="1">
+                                <label class="form-check-label" for="usdCheckbox">Calvin Klein (15)</label>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -269,7 +241,7 @@
                             <td th:text="${cloths.getSize()}?: 'N/A'">N/A</td>
                             <td th:text="${cloths.getColor()}?: 'N/A'">N/A</td>
                             <td th:text="${cloths.getGender()}?: 'N/A'">N/A</td>
-                            <!--        <td><a th:href="@{'/dbview/' + ${client.uuid != null ? client.uuid.toString() : ''} + '/delete'}">Delete</a></td>-->
+                                                        <!--        <td><a th:href="@{'/dbview/' + ${client.uuid != null ? client.uuid.toString() : ''} + '/delete'}">Delete</a></td>-->
                             <td><a th:if="${cloths.id != null}"
                                    th:href="@{'/clothing/' + ${cloths.id} + '/delete'}">Delete</a>
                             </td>
@@ -280,55 +252,182 @@
             </div>
         </div>
     </div>
-</div>
+    <div class="product-item-inner-hover pbot h-use-ui-lib">
+        <div class="image-wrap badges pull-left">
+        </div>
+        <div class="image-wrap badges">
+            <div class="product-item__badges product-item__badges--left">
+                <div widget-attachpoint="toggleWishlistItem" rel-widget-id="_0productBlock97426192" class="product-item__badges-item wishlist ">
+                </div>
+            </div>
+        </div>
+        <a href="#" class="cover-link" gtm-t-l="{&quot;event&quot;:&quot;OWOX&quot;,&quot;eventCategory&quot;:&quot;Interactions&quot;,&quot;eventAction&quot;:&quot;open&quot;,&quot;eventLabel&quot;:&quot;Product&quot;,&quot;eventLocation&quot;:&quot;catalog / leaf&quot;}"></a>
+        <div class="image-wrap" style="">
+            <a class="product-image-container" href="#" data-cy="leaf-product-item" rel-widget-id="_0productBlock97426192" widget-attachpoint="imageContainer" gtm-t-l="{&quot;event&quot;:&quot;OWOX&quot;,&quot;eventCategory&quot;:&quot;Interactions&quot;,&quot;eventAction&quot;:&quot;open&quot;,&quot;eventLabel&quot;:&quot;Product&quot;,&quot;eventLocation&quot;:&quot;catalog / leaf&quot;}">
+                <img class="image-list-container main-image" widget-attachpoint="mainImage" rel-widget-id="_0productBlock97426192" src="https://lt2.pigugroup.eu/colours/774/489/27/77448927/svarkas-vyrams-frappoli-c13e7_large.jpg" loading="lazy" alt="Švarkas vyrams Frappoli kaina ir informacija | Vyriški kostiumai " title="Švarkas vyrams Calvin" style="visibility: visible;">
+                <img class="image-list-container secondary-image" widget-attachpoint="secondaryImage" rel-widget-id="_0productBlock97426192" src="https://lt2.pigugroup.eu/colours/774/489/27/77448927/svarkas-vyrams-frappoli-5bfc6-kaina_large.jpg" loading="lazy" alt="Švarkas vyrams Frappoli kaina ir informacija | Vyriški kostiumai " title="Švarkas vyrams Calvin " style="visibility: hidden;">
+            </a>
+        </div>
+        <div class="product-price">
+<span class="price-leasing block no-resize">
+<strong>3<sup>55</sup> <small>€</small></strong> / mėn. &nbsp;
+</span>
+            <span class="price notranslate ">
+89<sup>95</sup> <small>€</small> </span>
+            <div class="product-item__unit-mrp">
+            </div>
+        </div>
+        <div class="product-availability clearfix">
+            <div class="product-block-rating-container">
+                <div class="product-rating">
+                    <div class="product-rating__stars">
+                        <div style="width: 1em;" class="product-rating__stars-value">
+                            <img class="star-img" src="https://lt2.pigugroup.eu/static/facelift/img/listing-svg/star.svg">
+                        </div>
+                    </div>
+                    <span class="product-rating__rating">5/5</span>
+                </div>
+            </div><div class="h-use-ui-lib display_flex">
+<span class="display_inline-flex h-label--transparent c-label--fast-delivery">
+<i class="c-icon--fast-delivery"></i>
+        </div> </div>
+        <p class="product-name">
+            <a href="#" title="Švarkas vyrams Frappoli" gtm-t-l="{&quot;event&quot;:&quot;OWOX&quot;,&quot;eventCategory&quot;:&quot;Interactions&quot;,&quot;eventAction&quot;:&quot;open&quot;,&quot;eventLabel&quot;:&quot;Product&quot;,&quot;eventLocation&quot;:&quot;catalog / leaf&quot;}">
+                Jacket for men Calvin Klein </a>
+        </p>
+        <div class="product-options fields-description">
+            <div class="product-options__item">
+                Brand: <b>Calvin Klein</b>
+            </div>
+            <div class="product-options__item">
+                Size: <b>L</b>
+            </div>
+        </div>
+    </div>
+
+    <div class="product-item-inner-hover pbot h-use-ui-lib">
+        <div class="image-wrap badges pull-left">
+        </div>
+        <div class="image-wrap badges">
+            <div class="product-item__badges product-item__badges--left">
+                <div widget-attachpoint="toggleWishlistItem" rel-widget-id="_0productBlock97426192" class="product-item__badges-item wishlist ">
+                </div>
+            </div>
+        </div>
+        <a href="#" class="cover-link" gtm-t-l="{&quot;event&quot;:&quot;OWOX&quot;,&quot;eventCategory&quot;:&quot;Interactions&quot;,&quot;eventAction&quot;:&quot;open&quot;,&quot;eventLabel&quot;:&quot;Product&quot;,&quot;eventLocation&quot;:&quot;catalog / leaf&quot;}"></a>
+        <div class="image-wrap" style="">
+            <a class="product-image-container" href="#" data-cy="leaf-product-item" rel-widget-id="_0productBlock97426192" widget-attachpoint="imageContainer" gtm-t-l="{&quot;event&quot;:&quot;OWOX&quot;,&quot;eventCategory&quot;:&quot;Interactions&quot;,&quot;eventAction&quot;:&quot;open&quot;,&quot;eventLabel&quot;:&quot;Product&quot;,&quot;eventLocation&quot;:&quot;catalog / leaf&quot;}">
+                <img src="https://lt2.pigugroup.eu/colours/569/316/79/56931679/komplektas-vyrams-omelt-pk7571-48221-xxl-caf3a_large.jpg" loading="lazy" alt="Komplektas vyrams Omelt PK7571-48221-XXL kaina ir informacija | Vyriški kostiumai " title="Komplektas vyrams Omelt PK7571-48221-XXL">
+            </a>
+        </div>
+        <div class="product-price">
+<span class="price-leasing block no-resize">
+<strong>2<sup>99</sup> <small>€</small></strong> / mėn. &nbsp;
+</span>
+            <span class="price notranslate ">
+29<sup>99</sup> <small>€</small> </span>
+            <div class="product-item__unit-mrp">
+            </div>
+        </div>
+        <div class="product-availability clearfix">
+            <div class="product-block-rating-container">
+                <div class="product-rating">
+                    <div class="product-rating__stars">
+                        <div style="width: 1em;" class="product-rating__stars-value">
+                            <img class="star-img" src="https://lt2.pigugroup.eu/static/facelift/img/listing-svg/star.svg">
+                        </div>
+                    </div>
+                    <span class="product-rating__rating">3/5</span>
+                </div>
+            </div><div class="h-use-ui-lib display_flex">
+<span class="display_inline-flex h-label--transparent c-label--fast-delivery">
+<i class="c-icon--fast-delivery"></i>
+        </div> </div>
+        <p class="product-name">
+            <a href="#" title="Švarkas vyrams " gtm-t-l="{&quot;event&quot;:&quot;OWOX&quot;,&quot;eventCategory&quot;:&quot;Interactions&quot;,&quot;eventAction&quot;:&quot;open&quot;,&quot;eventLabel&quot;:&quot;Product&quot;,&quot;eventLocation&quot;:&quot;catalog / leaf&quot;}">
+                Set for men Cross </a>
+        </p>
+        <div class="product-options fields-description">
+            <div class="product-options__item">
+                Brand: <b>Cross</b>
+            </div>
+            <div class="product-options__item">
+                Size: <b>M</b>
+            </div>
+        </div>
+    </div>
+
+    <div class="product-item-inner-hover pbot h-use-ui-lib">
+        <div class="image-wrap badges pull-left">
+        </div>
+        <div class="image-wrap badges">
+            <div class="product-item__badges product-item__badges--left">
+                <div widget-attachpoint="toggleWishlistItem" rel-widget-id="_0productBlock97426192" class="product-item__badges-item wishlist ">
+                </div>
+            </div>
+        </div>
+        <a href="#" class="cover-link" gtm-t-l="{&quot;event&quot;:&quot;OWOX&quot;,&quot;eventCategory&quot;:&quot;Interactions&quot;,&quot;eventAction&quot;:&quot;open&quot;,&quot;eventLabel&quot;:&quot;Product&quot;,&quot;eventLocation&quot;:&quot;catalog / leaf&quot;}"></a>
+        <div class="image-wrap" style="">
+            <a class="product-image-container" href="#" data-cy="leaf-product-item" rel-widget-id="_0productBlock97426192" widget-attachpoint="imageContainer" gtm-t-l="{&quot;event&quot;:&quot;OWOX&quot;,&quot;eventCategory&quot;:&quot;Interactions&quot;,&quot;eventAction&quot;:&quot;open&quot;,&quot;eventLabel&quot;:&quot;Product&quot;,&quot;eventLocation&quot;:&quot;catalog / leaf&quot;}">
+                <img class="image-list-container main-image" widget-attachpoint="mainImage" rel-widget-id="_9productBlock78217933" src="https://lt2.pigugroup.eu/colours/642/245/63/64224563/komplektas-vyrams-lt-juodas-b61c2-kaina_large.jpg" loading="lazy" alt="Komplektas vyrams LT, juodas kaina ir informacija | Vyriški kostiumai " title="Komplektas vyrams LT, juodas">
+            </a>
+        </div>
+        <div class="product-price">
+<span class="price-leasing block no-resize">
+<strong>1<sup>99</sup> <small>€</small></strong> / mėn. &nbsp;
+</span>
+            <span class="price notranslate ">
+11<sup>99</sup> <small>€</small> </span>
+            <div class="product-item__unit-mrp">
+            </div>
+        </div>
+        <div class="product-availability clearfix">
+            <div class="product-block-rating-container">
+                <div class="product-rating">
+                    <div class="product-rating__stars">
+                        <div style="width: 1em;" class="product-rating__stars-value">
+                            <img class="star-img" src="https://lt2.pigugroup.eu/static/facelift/img/listing-svg/star.svg">
+                        </div>
+                    </div>
+                    <span class="product-rating__rating">1/5</span>
+                </div>
+            </div><div class="h-use-ui-lib display_flex">
+<span class="display_inline-flex h-label--transparent c-label--fast-delivery">
+<i class="c-icon--fast-delivery"></i>
+        </div> </div>
+        <p class="product-name">
+            <a href="#" title="Švarkas vyrams " gtm-t-l="{&quot;event&quot;:&quot;OWOX&quot;,&quot;eventCategory&quot;:&quot;Interactions&quot;,&quot;eventAction&quot;:&quot;open&quot;,&quot;eventLabel&quot;:&quot;Product&quot;,&quot;eventLocation&quot;:&quot;catalog / leaf&quot;}">
+               Sport Set for men Datch </a>
+        </p>
+        <div class="product-options fields-description">
+            <div class="product-options__item">
+                Brand: <b>Datch</b>
+            </div>
+            <div class="product-options__item">
+                Size: <b>XL</b>
+            </div>
+        </div>
+    </div>
 
 
-<nav class="d-flex justify-content-end" aria-label="Page navigation">
-    <ul class="pagination">
-        <li class="page-item" th:classappend="${!clothingList.hasPrevious() ? 'disabled' : ''}">
-            <a class="page-link" th:href="@{/clthing(page=${clothingList.number} - 1)}">Previous</a>
-        </li>
-        <li th:each="pageNumber : ${#numbers.sequence(0, clothingList.totalPages - 1)}"
-            th:classappend="${pageNumber == clothingList.number ? 'active' : ''}">
-            <a class="page-link" th:href="@{/clothing(page=${pageNumber})}"
-               th:text="${pageNumber + 1}"></a>
-        </li>
-        <li class="page-item" th:classappend="${!clothingList.hasNext() ? 'disabled' : ''}">
-            <a class="page-link" th:href="@{/clothing(page=${clothingList.number} + 1)}">Next</a>
-        </li>
 
-    </ul>
-</nav>
 
+
+    <nav class="d-flex justify-content-end" aria-label="Page navigation">
+        <ul class="pagination">
+            <li class="page-item" th:classappend="${!clothingList.hasPrevious() ? 'disabled' : ''}">
+                <a class="page-link" th:href="@{/clthing(page=${clothingList.number} - 1)}">Previous</a>
+            </li>
+            <li th:each="pageNumber : ${#numbers.sequence(0, clothingList.totalPages - 1)}"
+                th:classappend="${pageNumber == clothingList.number ? 'active' : ''}">
+                <a class="page-link" th:href="@{/clothing(page=${pageNumber})}"
+                   th:text="${pageNumber + 1}"></a>
+            </li>
+            <li class="page-item" th:classappend="${!clothingList.hasNext() ? 'disabled' : ''}">
+                <a class="page-link" th:href="@{/clothing(page=${clothingList.number} + 1)}">Next</a>
+            </li>
+
+        </ul>
+    </nav>
 </body>
-
-
-<script>
-    function toggleSizeFilterButton() {
-        const checkedSizeCheckboxes = document.querySelectorAll('.size-filter-checkbox:checked');
-        const searchButtonSize = document.getElementById('searchButtonSize');
-        searchButtonSize.disabled = checkedSizeCheckboxes.length < 1;
-    }
-
-
-    function toggleGenderFilterButton() {
-        const checkedGenderCheckboxes = document.querySelectorAll('.filter-checkbox:checked');
-        const searchButtonGender = document.getElementById('searchButtonGender');
-        searchButtonGender.disabled = checkedGenderCheckboxes.length < 1;
-    }
-
-    function toggleColorFilterButton() {
-        const checkedGenderCheckboxes = document.querySelectorAll('.color-filter-checkbox:checked');
-        const searchButtonGender = document.getElementById('searchButtonColor');
-        searchButtonGender.disabled = checkedGenderCheckboxes.length < 1;
-    }
-    function toggleBrandFilterButton() {
-        const checkedGenderCheckboxes = document.querySelectorAll('.brand-filter-checkbox:checked');
-        const searchButtonGender = document.getElementById('searchButtonBrand');
-        searchButtonGender.disabled = checkedGenderCheckboxes.length < 1;
-    }
-
-</script>
-
-
 </html>
