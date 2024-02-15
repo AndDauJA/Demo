@@ -8,17 +8,18 @@ import org.springframework.stereotype.Component;
 public class FakerControler implements ApplicationRunner {
 
     private final DataFaker dataFaker;
+    private final DataFakerClothing dataFakerClothing;
 
 
-
-
-    public FakerControler(DataFaker dataFaker) {
+    public FakerControler(DataFaker dataFaker, DataFakerClothing dataFakerClothing) {
         this.dataFaker = dataFaker;
+        this.dataFakerClothing = dataFakerClothing;
     }
 
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        dataFaker.initClient();
+//        dataFaker.initClient();
+//        dataFakerClothing.initClothingFaker();
     }
 }
