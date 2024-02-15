@@ -7,7 +7,13 @@ spring:
     url: jdbc:mysql://localhost:3306/Demo
     username: AdminDemo
     password: password
-
+  sql:
+    init:
+      schema-locations: 'classpath:db/MTB mysql.sql'
+      data-locations: 'classpath:db/MTB dml.sql'
+      platform: mysql
+#      mode: never  // use for production
+      mode: always
   jpa:
     hibernate:
       ddl-auto: validate

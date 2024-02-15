@@ -1,6 +1,5 @@
 package com.mtb.demo.entity;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,15 +21,12 @@ public class Vendor {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id", nullable = false)
 	private Long id;
 
 	@Size(max = 255)
-	@Column(name = "url")
 	private String url;
 
 	@Size(max = 255)
-	@Column(name = "name")
 	private String name;
 
 	private String description;
