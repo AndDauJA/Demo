@@ -1,9 +1,8 @@
 package com.mtb.demo.service;
 
+import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 
-import com.mtb.demo.entity.Gender;
 import com.mtb.demo.entity.Product;
 import com.mtb.demo.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
@@ -45,7 +44,7 @@ public class ProductService {
 		return productRepository.findByCurrencyIdIn(currencyIds, pageable);
 	}
 
-	public Page<Product> getProductByGenders(Set<Gender> genders, Pageable pageable) {
-		return productRepository.findProductByProductGendersIn(genders, pageable);
+	public Collection<Product> getProductByGenders(String... genders) {
+		return productRepository.findAllByProductGenderCodes(genders);
 	}
 }

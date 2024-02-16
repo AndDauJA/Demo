@@ -12,5 +12,4 @@ import lombok.experimental.SuperBuilder;
 @Setter
 @Embeddable
 public class Kit extends Product {
-
 }

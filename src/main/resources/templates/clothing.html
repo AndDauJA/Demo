@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -9,9 +9,7 @@
     <link rel="stylesheet" th:href="@{css/style.css}">
 </head>
 <body>
-<div th:if="${clothingList == null or clothingList.isEmpty()}">Duomenu bazė tuščia</div>
-
-<div th:unless="${clothingList == null or clothingList.isEmpty()}">
+<div>
     <div class="container">
         <header class="main-header row">
 
@@ -66,25 +64,32 @@
             <div class="col-md-6">
                 <div class="filter-wrapper">
                     <div class="filter-container">
-                        <form id="genderFilterbox" th:action="@{/clothing}" method="get">
-                            <h2 class="container-selector">Gender</h2>
-                            <ul class="clothing-options">
+						<script>
+							function collectSelectedFilters() {
+								var selectedFilters = [];
+								// Get all checkboxes with the name 'filter' and check if they are checked
+								var checkboxes = document.querySelectorAll('input[name="genderFilter"]:checked');
+								checkboxes.forEach(function(checkbox) {
+									selectedFilters.push(checkbox.value);
+								});
+								// Set the value of the hidden input field to the JSON string representation of the selectedFilters array
+								document.getElementById('selectedGenderFilters').value = selectedFilters;
+							}
+						</script>
+						<form th:action="@{/clothing/filter}" method="post" onsubmit="collectSelectedFilters()" th:object="${productFilterDto}">
+							<li class="cloth-size">
+								<input class="form-check-input" type="checkbox" name="genderFilter" value="MALE" id="male">
+								<label class="form-check-label" for="male">Male</label>
+							</li>
+							<li class="cloth-size">
+								<input class="form-check-input" type="checkbox" name="genderFilter" value="FEMALE" id="female">
+								<label class="form-check-label" for="female">Female</label>
+							</li>
 
-                                <li class="cloth-size">
-                                    <input class="form-check-input" type="checkbox" name="gender" id="male" value="male">
-                                    <label class="form-check-label" for="male">Male</label>
-                                </li>
-                                <li class="cloth-size">
-                                    <input class="form-check-input" type="checkbox" name="gender" id="female" value="female">
-                                    <label class="form-check-label" for="female">Female</label>
-                                </li>
-                                <li class="cloth-size">
-                                    <input class="form-check-input" type="checkbox" name="gender" id="kid" value="kid">
-                                    <label class="form-check-label" for="kid">Kid</label>
-                                </li>
-                            </ul>
-                            <button type="submit" class="btn btn-primary">Filter</button>
-                        </form>
+							<!-- Hidden input field to store selected filters -->
+							<input type="hidden" id="selectedGenderFilters" name="selectedGenderFilters" th:field="*{selectedGenderFilters}">
+							<button type="submit">Apply Filters</button>
+						</form>
 
                         <ul class="clothing-options">
                             <h2 class="container-selector">Size</h2>
@@ -224,27 +229,21 @@
                         <thead>
                         <tr>
                             <th scope="col">Id</th>
-                            <th scope="col">Brand</th>
-                            <th scope="col">Size</th>
-                            <th scope="col">Color</th>
-                            <th scope="col">Gender</th>
+<!--                            <th scope="col">Brand</th>-->
+<!--                            <th scope="col">Size</th>-->
+<!--                            <th scope="col">Color</th>-->
+<!--                            <th scope="col">Gender</th>-->
                             <th></th>
                         </tr>
                         </thead>
                         <tbody>
 
                         <tr th:each="cloths, stat : ${clothingList}">
-
                             <td th:text="${stat.count}">N/A</td>
-
-                            <td th:text="${cloths.getBrand()}?: 'N/A'">N/A</td>
-                            <td th:text="${cloths.getSize()}?: 'N/A'">N/A</td>
-                            <td th:text="${cloths.getColor()}?: 'N/A'">N/A</td>
-                            <td th:text="${cloths.getGender()}?: 'N/A'">N/A</td>
-                                                        <!--        <td><a th:href="@{'/dbview/' + ${client.uuid != null ? client.uuid.toString() : ''} + '/delete'}">Delete</a></td>-->
-                            <td><a th:if="${cloths.id != null}"
-                                   th:href="@{'/clothing/' + ${cloths.id} + '/delete'}">Delete</a>
-                            </td>
+<!--                            <td th:text="${cloths.getBrand()}?: 'N/A'">N/A</td>-->
+<!--                            <td th:text="${cloths.getProductSizes()}?: 'N/A'">N/A</td>-->
+<!--                            <td th:text="${cloths.getColor()}?: 'N/A'">N/A</td>-->
+<!--                            <td th:text="${cloths.getGender()}?: 'N/A'">N/A</td>-->
                         </tr>
                         </tbody>
                     </table>
@@ -252,24 +251,6 @@
             </div>
         </div>
     </div>
-
-
 </div>
-    <nav class="d-flex justify-content-end" aria-label="Page navigation">
-        <ul class="pagination">
-            <li class="page-item" th:classappend="${!clothingList.hasPrevious() ? 'disabled' : ''}">
-                <a class="page-link" th:href="@{/clthing(page=${clothingList.number} - 1)}">Previous</a>
-            </li>
-            <li th:each="pageNumber : ${#numbers.sequence(0, clothingList.totalPages - 1)}"
-                th:classappend="${pageNumber == clothingList.number ? 'active' : ''}">
-                <a class="page-link" th:href="@{/clothing(page=${pageNumber})}"
-                   th:text="${pageNumber + 1}"></a>
-            </li>
-            <li class="page-item" th:classappend="${!clothingList.hasNext() ? 'disabled' : ''}">
-                <a class="page-link" th:href="@{/clothing(page=${clothingList.number} + 1)}">Next</a>
-            </li>
-
-        </ul>
-    </nav>
 </body>
 </html>

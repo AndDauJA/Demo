@@ -4,11 +4,11 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
-import com.mtb.demo.entity.Gender;
 import com.mtb.demo.entity.Product;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
@@ -20,7 +20,9 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
 	Optional<Product> findProductById(Long id);
 
-	Page<Product> findProductByProductGendersIn(Collection<Gender> genders, Pageable pageable);
+	@Query("SELECT p FROM Product p"
+		   + " JOIN p.productGenders g WHERE g.code IN (:genders)")
+	Collection<Product> findAllByProductGenderCodes(String... genders);
 
 	Page<Product> searchProductsByNameAndDescription(String name, String description, Pageable pageable);
 }

@@ -69,13 +69,6 @@ public abstract class Product {
 
 	@Builder.Default
 	@ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-	@JoinTable(name = "product_bike_frames",
-			   joinColumns = @JoinColumn(name = "product_id"),
-			   inverseJoinColumns = @JoinColumn(name = "bike_frame_id"))
-	private Set<BikeFrame> bikeFrames = new LinkedHashSet<>();
-
-	@Builder.Default
-	@ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
 	@JoinTable(name = "product_colors",
 			   joinColumns = @JoinColumn(name = "product_id"),
 			   inverseJoinColumns = @JoinColumn(name = "color_id"))

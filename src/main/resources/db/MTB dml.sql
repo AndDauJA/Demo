@@ -6,3 +6,7 @@ values ('BIKE', 'bike'),
        ('HELMET', 'helmet'),
        ('KIT', 'kit'),
        ('ACCESSORY', 'accessory');
+
+insert into gender (code)
+values ('MALE'),
+       ('FEMALE');
