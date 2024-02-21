@@ -11,7 +11,7 @@ insert into gender (code)
 values ('MALE'),
        ('FEMALE');
 
-insert into size (code)
+insert into size (value)
 values  ('XXS'),
         ('XS'),
         ('S'),
@@ -20,22 +20,16 @@ values  ('XXS'),
         ('XL'),
         ('XXL');
 
-insert into color (code)
-values  ('BLACK'),
-        ('WHITE'),
-        ('YELLOW'),
-        ('RED'),
-        ('PURPLE'),
-        ('PINK'),
-        ('GREEN'),
-        ('GRAY'),
-        ('BLUE');
+insert into color (code, name)
+values  ('BLACK', 'black'),
+        ('WHITE', 'white'),
+        ('YELLOW', 'yellow'),
+        ('RED', 'red'),
+        ('PURPLE', 'purple'),
+        ('PINK', 'pink'),
+        ('GREEN', 'green'),
+        ('GRAY', 'gray'),
+        ('BLUE', 'blue');
 
-insert into brand (code)
-values ('NIKE'),
-       ('PUMA'),
-       ('ADIDAS'),
-       ('DIESEL'),
-       ('DATCH'),
-       ('CROSS'),
-       ('CALVIN_KLEIN');
+insert into brand (name)
+values ('CONTEXT');
