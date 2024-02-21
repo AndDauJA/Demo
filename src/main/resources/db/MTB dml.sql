@@ -32,4 +32,4 @@ values  ('BLACK', 'black'),
         ('BLUE', 'blue');
 
 insert into brand (name)
-values ('CONTEXT');
+values ('Context ridewear');
