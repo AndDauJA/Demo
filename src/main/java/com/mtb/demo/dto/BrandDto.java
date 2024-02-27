@@ -4,7 +4,11 @@ import lombok.Builder;
 import lombok.Getter;
 
 @Builder
-@Getter
+
 public class BrandDto {
     private final String brandName;
+
+    public String getBrandName() {
+        return brandName;
+    }
 }

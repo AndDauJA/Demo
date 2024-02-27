@@ -19,13 +19,8 @@ public class BrandDtoMapper {
                 .build();
     }
 
-    public List<BrandDto> mapToBrandDtos(Collection<Brand> brands) {
-        List<BrandDto> list = new ArrayList<>();
-        for (Brand brand : brands) {
-            BrandDto brandDto = mapToBrandDto(brand);
-            list.add(brandDto);
-        }
-        return list;
+    public Collection<BrandDto> mapToBrandDtos(Collection<Brand> brands) {
+        return brands.stream().map(this::mapToBrandDto).collect(Collectors.toList());
     }
 
 

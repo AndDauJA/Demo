@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class GenderDtoMapper {
@@ -17,11 +18,6 @@ public class GenderDtoMapper {
     }
 
     public List<GenderDto> mapToGenderDtos(Collection<Gender> genders) {
-        List<GenderDto> list = new ArrayList<>();
-        for (Gender gender : genders) {
-            GenderDto genderDto = mapToGenderDto(gender);
-            list.add(genderDto);
-        }
-        return list;
+        return genders.stream().map(this::mapToGenderDto).collect(Collectors.toList());
     }
 }

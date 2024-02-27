@@ -4,8 +4,11 @@ import lombok.Builder;
 import lombok.Getter;
 
 @Builder
-@Getter
+
 public class GenderDto {
     private final String code;
 
+    public String getCode() {
+        return code;
+    }
 }

@@ -4,8 +4,11 @@ import lombok.Builder;
 import lombok.Getter;
 
 @Builder
-@Getter
-public class SizeDto {
-	private final String name;
 
+public class SizeDto {
+    private final String name;
+
+    public String getName() {
+        return name;
+    }
 }

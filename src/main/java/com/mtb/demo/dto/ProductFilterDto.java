@@ -6,13 +6,23 @@ import lombok.Builder;
 import lombok.Getter;
 
 @Builder
-@Getter
+
 public class ProductFilterDto {
+    private final Collection<String> selectedGenderFilter;
+    private final Collection<String> selectedBrandNameFilter;
+    private final Collection<String> selectedColorFilter;
 
+    public Collection<String> getSelectedGenderFilter() {
+        return selectedGenderFilter;
+    }
 
+    public Collection<String> getSelectedBrandNameFilter() {
+        return selectedBrandNameFilter;
+    }
 
-	private final Collection<String> selectedGenderFilter;
-	private final Collection<String> selectedBrandNameFilter;
-	private final Collection<String> selectedColorFilter;
+    public Collection<String> getSelectedColorFilter() {
+        return selectedColorFilter;
+    }
+
 
 }

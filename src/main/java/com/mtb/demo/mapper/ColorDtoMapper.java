@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Component
@@ -18,12 +19,7 @@ public class ColorDtoMapper {
     }
 
     public List<ColorDto> mapToColorDtos(Collection<Color> colors) {
-        List<ColorDto> list = new ArrayList<>();
-        for (Color color : colors) {
-            ColorDto colorDto = mapToColorDto(color);
-            list.add(colorDto);
-        }
-        return list;
+        return colors.stream().map(this::mapToColorDto).collect(Collectors.toList());
     }
 
 }
