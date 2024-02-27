@@ -11,6 +11,9 @@ public class KitProductMapper {
 		return Kit.builder()
 				.id(product.getId())
 				.name(product.getName())
+				.brand(product.getBrand())
+				.productGenders(product.getProductGenders())
+				.productSizes(product.getProductSizes())
 				.build();
 	}
 

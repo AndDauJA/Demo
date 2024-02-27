@@ -37,30 +37,31 @@ public class SearchControler {
 
         Page<Product> products;
 
-        if (currencyIds != null && !currencyIds.isEmpty()) {
-            // Filtravimas pagal valiutas
-            products = productService.getProductByCurrencyIds(currencyIds, pageable);
-        }
-        if (name != null && !name.isEmpty()) {
-            // Filtravimas pagal vardą
-            products = productService.getProductByName(name, pageable);
-                        model.addAttribute("searchedName", name);
-
-            if (description != null && !description.isEmpty()) {
-                // Papildomas filtravimas pagal aprašymą, jei nurodytas
-                products = filterProductsByDescription(products, description);
-            }
-        } else if (description != null && !description.isEmpty()) {
-            // Filtravimas pagal aprašymą
-            products = productService.getProductsByDescription(description, pageable);
-            model.addAttribute("searchedDescription", description);
-        } else {
-            // Grąžinami visi produktai
-            products = productService.getAllClientsPages(pageable);
-        }
-
-        model.addAttribute("productList", products);
-        return "searchdemo";
+//        if (currencyIds != null && !currencyIds.isEmpty()) {
+//            // Filtravimas pagal valiutas
+//            products = productService.getProductByCurrencyIds(currencyIds, pageable);
+//        }
+//        if (name != null && !name.isEmpty()) {
+//            // Filtravimas pagal vardą
+//            products = productService.getProductByName(name, pageable);
+//                        model.addAttribute("searchedName", name);
+//
+//            if (description != null && !description.isEmpty()) {
+//                // Papildomas filtravimas pagal aprašymą, jei nurodytas
+//                products = filterProductsByDescription(products, description);
+//            }
+//        } else if (description != null && !description.isEmpty()) {
+//            // Filtravimas pagal aprašymą
+//            products = productService.getProductsByDescription(description, pageable);
+//            model.addAttribute("searchedDescription", description);
+//        } else {
+//            // Grąžinami visi produktai
+//            products = productService.getAllClientsPages(pageable);
+//        }
+//
+//        model.addAttribute("productList", products);
+//        return "searchdemo";
+        return null;
     }
 
     private Page<Product> filterProductsByDescription(Page<Product> products, String description) {

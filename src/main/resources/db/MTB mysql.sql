@@ -187,7 +187,7 @@ CREATE TABLE helmet
 ALTER TABLE helmet
     ADD FOREIGN KEY (id) REFERENCES helmet_type (id);
 
-create table product_bike_frames
+CREATE TABLE product_bike_frames
 (
     bike_frame_id  bigint not null,
     product_id     bigint not null,

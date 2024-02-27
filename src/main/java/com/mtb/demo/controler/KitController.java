@@ -1,10 +1,15 @@
 package com.mtb.demo.controler;
 
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 import com.mtb.demo.dto.ProductDTO;
 import com.mtb.demo.dto.ProductFilterDto;
+import com.mtb.demo.entity.Gender;
+import com.mtb.demo.entity.Product;
+import com.mtb.demo.mapper.ProductDtoMapper;
 import com.mtb.demo.service.KitService;
+import com.mtb.demo.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -13,35 +18,34 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequiredArgsConstructor
 public class KitController {
 
-	private final KitService kitService;
+    private final KitService kitService;
+    private final ProductService productService;
+    ProductDtoMapper productDtoMapper;
 
-	@GetMapping("/clothing")
-	public String getClothingForm(Model model) {
-		model.addAttribute("productFilterDto", ProductFilterDto.builder().build());
-		model.addAttribute("clothingList", ProductDTO.builder().build());
-		return "clothing";
-	}
+    @GetMapping("/product")
+    public String getProductForm(Model model) {
+        Collection<ProductDTO> products;
 
-	@PostMapping("/clothing/filter")
-	public String dataBAseViewForm(Model model,
-								   ProductFilterDto productFilterDto) {
-		List<ProductDTO> productDtos = kitService.getProductByProductFilter(productFilterDto);
-		model.addAttribute("clothingList", productDtos);
-		return "clothing";
-	}
+            products = kitService.getAllProducts();
 
-	@GetMapping("indexdemo")
-	public String indexViewForm(
-			Model model,
-			@PageableDefault(size = 20, sort = {"name"},
-							 direction = Sort.Direction.ASC) Pageable pageable) {
+        model.addAttribute("productList", products);
+        return "product";
+    }
 
-		model.addAttribute("productList", pageable);
-		return "indexdemo";
-	}
+
+
+    @PostMapping("/product")
+    public String filterProducts(@RequestParam(required = false) List<String> genderFilter, ProductFilterDto productFilterDto, Model model) {
+        List<ProductDTO> filteredProducts = kitService.getProductByProductFilter(productFilterDto);
+//        Collection<Product> filteredProducts = productService.getProductByGenders(genderFilter.toArray(new String[0]));
+        model.addAttribute("productList", filteredProducts);
+        return "product";
+    }
+
 }
