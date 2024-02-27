@@ -66,7 +66,7 @@
                     <div class="filter-container">
 
                         <form th:action="@{/product}" method="post">
-<!--                              th:object="${productFilterDto}">-->
+                            <!--                              th:object="${productFilterDto}">-->
 
 
                             <!-- Hidden input field to store selected filters -->
@@ -75,12 +75,14 @@
                             <ul class="clothing-options">
                                 <h2 class="container-selector">Gender</h2>
                                 <li class="cloth-size">
-                                    <input class="form-check-input" type="checkbox" name="selectedGenderFilters" value="M"
+                                    <input class="form-check-input" type="checkbox" name="selectedGenderFilter"
+                                           value="M"
                                            id="male">
                                     <label class="form-check-label" for="male">Male</label>
                                 </li>
                                 <li class="cloth-size">
-                                    <input class="form-check-input" type="checkbox" name="selectedGenderFilters" value="F"
+                                    <input class="form-check-input" type="checkbox" name="selectedGenderFilter"
+                                           value="F"
                                            id="female">
                                     <label class="form-check-label" for="female">Female</label>
                                 </li>
@@ -176,14 +178,14 @@
                                 <h2 class="container-selector">Brand</h2>
 
                                 <li class="cloth-size">
-                                    <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox17"
-                                           value="1">
-                                    <label class="form-check-label" for="usdCheckbox">Nike (111)</label>
+                                    <input class="form-check-input" type="checkbox" name="selectedBrandNameFilter" value="Nike"
+                                           id="Nike">
+                                    <label class="form-check-label" for="Nike">Nike (111)</label>
                                 </li>
                                 <li class="cloth-size">
-                                    <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox18"
-                                           value="1">
-                                    <label class="form-check-label" for="usdCheckbox">Puma (52)</label>
+                                    <input class="form-check-input" type="checkbox" name="selectedBrandNameFilter" id="Puma"
+                                           value="Puma">
+                                    <label class="form-check-label" for="Puma">Puma (52)</label>
                                 </li>
                                 <li class="cloth-size">
                                     <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox19"

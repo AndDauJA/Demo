@@ -11,7 +11,7 @@ public class ProductFilterDto {
 
 
 
-	private final Collection<String> selectedGenderFilters;
+	private final Collection<String> selectedGenderFilter;
 	private final Collection<String> selectedBrandNameFilter;
 	private final Collection<String> selectedColorFilter;
 

@@ -37,8 +37,8 @@ public class ProductService {
     public Collection<Product> getProductByGenders(String... genders) {
         return productRepository.findAllByProductGenders(genders);
     }
-//    public Collection<Product> getProductByBrandName(String... brandName){
-//        return productRepository.findAllByProductBrandNames(brandName);
-//    }
+    public Collection<Product> getProductByBrandNames(String... brandName){
+        return productRepository.findAllByProductBrandNames(brandName);
+    }
 
 }

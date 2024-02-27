@@ -29,8 +29,9 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     //	@Query("SELECT p FROM Product p JOIN p.productGenders b WHERE b.code = :genders")
 //	Collection<Product> findAllByProductGenders(String... genders);
-//    @Query("SELECT p FROM Product p JOIN p.brand b WHERE b.name IN :brandNames")
-//    Collection<Product> findAllByProductBrandNames(@Param("brandName") String... brandNames);
+    @Query("SELECT p FROM Product p"
+            +" JOIN p.brand b WHERE b.name IN :brandNames")
+    Collection<Product> findAllByProductBrandNames(@Param("brandNames") String... brandNames);
 
     @Query("SELECT p FROM Product p JOIN p.productColors b WHERE b.code = :color")
     Collection<Product> findAllByProductColor(Collection<String> color);

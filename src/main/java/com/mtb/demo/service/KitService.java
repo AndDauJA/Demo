@@ -1,8 +1,10 @@
 package com.mtb.demo.service;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import com.mtb.demo.dto.ProductDTO;
 import com.mtb.demo.dto.ProductFilterDto;
@@ -24,22 +26,35 @@ public class KitService {
     private final GenderDtoMapper genderDtoMapper;
 
     public List<ProductDTO> getProductByProductFilter(ProductFilterDto productFilterDto) {
-//        final Collection<String> genders = productFilterDto.getSelectedGenderFilters().stream().toList();
-//        final Collection<Product> productByGenders = productService.getProductByGenders(productFilterDto.getSelectedGenderFilters());
-        Collection<String> genderFilters = productFilterDto.getSelectedGenderFilters();
-        final Collection<Product> productByGenders = productService.getProductByGenders(genderFilters.toArray(new String[0]));
-        final List<Kit> kits = productByGenders.stream()
-                .map(kitProductMapper::mapTo)
-                .toList();
-        return productDtoMapper.mapToProductDtos(kits);
+
+        final Collection<String> brandNameFilters=productFilterDto.getSelectedBrandNameFilter();
+        final Collection<String> genderFilters = productFilterDto.getSelectedGenderFilter();
+
+        Collection<Product> filteredProductsByGenders = Collections.emptyList();
+        Collection<Product> filteredProductsByBrandNames = Collections.emptyList();
+
+        if (genderFilters != null && !genderFilters.isEmpty()) {
+            filteredProductsByGenders = productService.getProductByGenders(genderFilters.toArray(new String[0]));
+        }
+        if (brandNameFilters != null && !brandNameFilters.isEmpty()) {
+            filteredProductsByBrandNames = productService.getProductByBrandNames(brandNameFilters.toArray(new String[0]));
+        }
+//        final Collection<Product> productByGenders = productService.getProductByGenders(genderFilters.toArray(new String[0]));
+        Collection<Product> combinedFilteredProducts = Stream.concat(filteredProductsByGenders.stream(), filteredProductsByBrandNames.stream())
+                .collect(Collectors.toSet());
+//        final List<Kit> kits = productByGenders.stream()
+//                .map(kitProductMapper::mapTo)
+//
+//                .toList();
+//        return productDtoMapper.mapToProductDtos(kits);
+        return combinedFilteredProducts.stream()
+                .map(productDtoMapper::mapToProductDto)
+                .collect(Collectors.toList());
     }
 
-
-
-
     public List<ProductDTO> getAllProducts() {
-                List<Product> products = productService.getAllProducts();
-                return products.stream()
+        List<Product> products = productService.getAllProducts();
+        return products.stream()
                 .map(productDtoMapper::mapToProductDto)
                 .collect(Collectors.toList());
     }
