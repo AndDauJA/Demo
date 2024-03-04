@@ -1,0 +1,14 @@
+logging:
+  level:
+    com:
+      mtb:
+        demo:
+          integration: DEBUG
+
+integration:
+  #  More info about bigcommerce api: https://developer.bigcommerce.com/docs/rest-catalog/
+  bigcommerce-api:
+    clients:
+      - clientClassApi: com.mtb.demo.integration.contextriderwear.api.ContextRiderWearApi
+        baseUrl: "https://api.bigcommerce.com/stores/<HASH_REQUIRED>/v3"
+        accessToken: "<SECRET_TOKEN_REQUIRED>"

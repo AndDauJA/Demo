@@ -1,6 +1,9 @@
 spring:
   main:
     banner-mode: off
+#  profiles:
+#    include:
+#      - integration  #uncomment for integration
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -12,7 +15,7 @@ spring:
       schema-locations: 'classpath:db/MTB mysql.sql'
       data-locations: 'classpath:db/MTB dml.sql'
       platform: mysql
-#      mode: never  // use for production
+      #      mode: never  # use for production
       mode: always
   jpa:
     hibernate:
