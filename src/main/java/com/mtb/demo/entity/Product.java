@@ -79,7 +79,7 @@ public abstract class Product {
 	@JoinTable(name = "product_genders",
 			   joinColumns = @JoinColumn(name = "product_id"),
 			   inverseJoinColumns = @JoinColumn(name = "gender_id"))
-	private Set<Gender> productGenders = new LinkedHashSet<>();
+	private Set<com.mtb.demo.entity.Gender> productGenders = new LinkedHashSet<>();
 
 	@Builder.Default
 	@ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
@@ -87,6 +87,7 @@ public abstract class Product {
 			   joinColumns = @JoinColumn(name = "product_id"),
 			   inverseJoinColumns = @JoinColumn(name = "size_id"))
 	private Set<com.mtb.demo.entity.Size> productSizes = new LinkedHashSet<>();
+
 
 	@Column(name = "d_type", nullable = false)
 	@Size(max = 31)

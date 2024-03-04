@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Products</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" th:href="@{css/style.css}">
+</head>
+<body>
+<div>
+    <div class="container">
+        <header class="main-header row">
+
+            <div class="main-header-wrapper">
+                <div class="logo-wrapper">
+                    <img src="DemoLogo.svg" alt="Demo Logo">
+                </div>
+
+                <nav class="navigation-wrapper">
+                    <ul class="menu-list">
+                        <li class="meniu-item">
+                            <a class="menu-link" href="indexdemo">Home</a>
+                        </li>
+                        <li class="meniu-item">
+                            <a class="menu-link" href="product">Product</a>
+                        </li>
+                        <li class="meniu-item">
+                            <a class="menu-link" href="#">Bikes</a>
+                        </li>
+                        <li class="meniu-item">
+                            <a class="menu-link" href="#">Wheels & Tyres</a>
+                        </li>
+                        <li class="meniu-item">
+                            <a class="menu-link" href="#">Bike parts</a>
+                        </li>
+                        <li class="meniu-item">
+                            <a class="menu-link" href="#">Footwear</a>
+                        </li>
+                        <li class="meniu-item">
+                            <a class="menu-link" href="#">Helmets & Protection</a>
+                        </li>
+                        <li class="meniu-item">
+                            <a class="menu-link" href="#">Accessories</a>
+                        </li>
+                    </ul>
+                    <div class="meniu-search">
+                        <form id="nameSearchForm1" method="get" th:action="@{/product}"
+                              class="flex-grow-1 me-2 input-group rounded">
+                            <input class="form-control me-2 rounded" type="search" aria-label="Search" name="brandName"
+                                   placeholder="Enter first Brand Name">
+                            <button class="btn btn-outline-success rounded" type="submit">Search</button>
+                        </form>
+
+                    </div>
+                </nav>
+            </div>
+
+        </header>
+
+        <div class="row">
+
+            <div class="col-md-6">
+                <div class="filter-wrapper">
+                    <div class="filter-container">
+
+                        <form th:action="@{/product}" method="post">
+                            <!--                              th:object="${productFilterDto}">-->
+
+
+                            <!-- Hidden input field to store selected filters -->
+
+
+                            <ul class="clothing-options">
+                                <h2 class="container-selector">Gender</h2>
+                                <li class="cloth-size">
+                                    <input class="form-check-input" type="checkbox" name="selectedGenderFilter"
+                                           value="M"
+                                           id="male">
+                                    <label class="form-check-label" for="male">Male</label>
+                                </li>
+                                <li class="cloth-size">
+                                    <input class="form-check-input" type="checkbox" name="selectedGenderFilter"
+                                           value="F"
+                                           id="female">
+                                    <label class="form-check-label" for="female">Female</label>
+                                </li>
+                                <h2 class="container-selector">Size</h2>
+                                <li class="cloth-size">
+                                    <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox"
+                                           value="1">
+                                    <label class="form-check-label" for="usdCheckbox">XXS (1)</label>
+                                </li>
+                                <li class="cloth-size">
+                                    <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox2"
+                                           value="1">
+                                    <label class="form-check-label" for="usdCheckbox">XS (5)</label>
+                                </li>
+                                <li class="cloth-size">
+                                    <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox3"
+                                           value="1">
+                                    <label class="form-check-label" for="usdCheckbox">S (1)</label>
+                                </li>
+                                <li class="cloth-size">
+                                    <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox4"
+                                           value="1">
+                                    <label class="form-check-label" for="usdCheckbox">M (101)</label>
+                                </li>
+                                <li class="cloth-size">
+                                    <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox5"
+                                           value="1">
+                                    <label class="form-check-label" for="usdCheckbox">L (52)</label>
+                                </li>
+                                <li class="cloth-size">
+                                    <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox6"
+                                           value="1">
+                                    <label class="form-check-label" for="usdCheckbox">XL (15)</label>
+                                </li>
+                                <li class="cloth-size">
+                                    <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox7"
+                                           value="1">
+                                    <label class="form-check-label" for="usdCheckbox">XXL (10)</label>
+                                </li>
+                                <li class="cloth-size">
+                                    <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox8"
+                                           value="1">
+                                    <label class="form-check-label" for="usdCheckbox">XXL (1)</label>
+                                </li>
+                            </ul>
+
+                            <ul class="clothing-options">
+                                <h2 class="container-selector">Color</h2>
+
+                                <li class="cloth-size">
+                                    <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox9"
+                                           value="1">
+                                    <label class="form-check-label" for="usdCheckbox">Black (22)</label>
+                                </li>
+                                <li class="cloth-size">
+                                    <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox10"
+                                           value="1">
+                                    <label class="form-check-label" for="usdCheckbox">White (5)</label>
+                                </li>
+                                <li class="cloth-size">
+                                    <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox11"
+                                           value="1">
+                                    <label class="form-check-label" for="usdCheckbox">Yellow (1)</label>
+                                </li>
+                                <li class="cloth-size">
+                                    <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox12"
+                                           value="1">
+                                    <label class="form-check-label" for="usdCheckbox">Red(11)</label>
+                                </li>
+                                <li class="cloth-size">
+                                    <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox13"
+                                           value="1">
+                                    <label class="form-check-label" for="usdCheckbox">Purple (13)</label>
+                                </li>
+                                <li class="cloth-size">
+                                    <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox14"
+                                           value="1">
+                                    <label class="form-check-label" for="usdCheckbox">Pink (12)</label>
+                                </li>
+                                <li class="cloth-size">
+                                    <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox15"
+                                           value="1">
+                                    <label class="form-check-label" for="usdCheckbox">Green (1)</label>
+                                </li>
+                                <li class="cloth-size">
+                                    <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox16"
+                                           value="1">
+                                    <label class="form-check-label" for="usdCheckbox">Gray (2)</label>
+                                </li>
+                            </ul>
+
+                            <ul class="clothing-options">
+                                <h2 class="container-selector">Brand</h2>
+
+                                <li class="cloth-size">
+                                    <input class="form-check-input" type="checkbox" name="selectedBrandNameFilter" value="Nike"
+                                           id="Nike">
+                                    <label class="form-check-label" for="Nike">Nike (111)</label>
+                                </li>
+                                <li class="cloth-size">
+                                    <input class="form-check-input" type="checkbox" name="selectedBrandNameFilter" id="Puma"
+                                           value="Puma">
+                                    <label class="form-check-label" for="Puma">Puma (52)</label>
+                                </li>
+                                <li class="cloth-size">
+                                    <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox19"
+                                           value="1">
+                                    <label class="form-check-label" for="usdCheckbox">Adidas (100)</label>
+                                </li>
+                                <li class="cloth-size">
+                                    <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox20"
+                                           value="1">
+                                    <label class="form-check-label" for="usdCheckbox">Diesel (1)</label>
+                                </li>
+                                <li class="cloth-size">
+                                    <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox21"
+                                           value="1">
+                                    <label class="form-check-label" for="usdCheckbox">Datch (2)</label>
+                                </li>
+                                <li class="cloth-size">
+                                    <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox22"
+                                           value="1">
+                                    <label class="form-check-label" for="usdCheckbox">Cross (15)</label>
+                                </li>
+                                <li class="cloth-size">
+                                    <input class="form-check-input" type="checkbox" name="currency" id="usdCheckbox23"
+                                           value="1">
+                                    <label class="form-check-label" for="usdCheckbox">Calvin Klein (15)</label>
+                                </li>
+                            </ul>
+                            <!--                            <input type="hidden" id="selectedGenderFilters" name="selectedGenderFilters"-->
+                            <!--                                   th:field="*{selectedGenderFilters}">-->
+                            <button type="submit">Apply Filters</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="d-flex justify-content-end">
+                    <table class="table table table-striped w-100">
+
+                        <thead>
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Brand</th>
+                            <th scope="col">Size</th>
+                            <th scope="col">Color</th>
+                            <th scope="col">Gender</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="product, stat: ${productList}">
+                            <td th:text="${stat.count}">N/A</td>
+                            <td th:text="${product.name} ?: 'N/A'">Product Name</td>
+                            <td th:text="${product.toBrandStr()}?: 'N/A'">N/A</td>
+                            <td th:text="${product.toSizesStr()}?: 'N/A'">N/A</td>
+                            <td th:text="${product.toColorStr()}?: 'N/A'">N/A</td>
+                            <td th:text="${product.toGenderStr()}?: 'N/A'">N/A</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
