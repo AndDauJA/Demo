@@ -5,12 +5,17 @@ import java.util.Collection;
 import lombok.Builder;
 import lombok.Getter;
 
-@Getter
-@Builder
-public class ProductFilterDto {
-    private final Collection<String> selectedGenderFilter;
-    private final Collection<String> selectedBrandNameFilter;
-    private final Collection<String> selectedColorFilter;
 
+@Builder
+public record ProductFilterDto(Collection<String> selectedGenderFilter,
+                               Collection<String> selectedBrandNameFilter,
+                               Collection<String> selectedColorFilter) {
+    public ProductFilterDto(Collection<String> selectedGenderFilter,
+                            Collection<String> selectedBrandNameFilter,
+                            Collection<String> selectedColorFilter) {
+        this.selectedGenderFilter = selectedGenderFilter;
+        this.selectedBrandNameFilter = selectedBrandNameFilter;
+        this.selectedColorFilter = selectedColorFilter;
+    }
 
 }
