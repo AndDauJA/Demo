@@ -1,20 +1,18 @@
 package com.mtb.demo.service;
 
+import com.mtb.demo.dto.ProductDTO;
+import com.mtb.demo.dto.ProductFilterDto;
+import com.mtb.demo.entity.Product;
+import com.mtb.demo.mapper.ProductDtoMapper;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
-import com.mtb.demo.dto.ProductDTO;
-import com.mtb.demo.dto.ProductFilterDto;
-import com.mtb.demo.entity.Product;
-import com.mtb.demo.mapper.GenderDtoMapper;
-import com.mtb.demo.mapper.KitProductMapper;
-import com.mtb.demo.mapper.ProductDtoMapper;
-import jakarta.transaction.Transactional;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor

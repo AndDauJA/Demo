@@ -3,6 +3,7 @@ DROP TABLE IF EXISTS product_colors CASCADE;
 DROP TABLE IF EXISTS product_sizes CASCADE;
 DROP TABLE IF EXISTS product_genders CASCADE;
 DROP TABLE IF EXISTS product_bike_frames CASCADE;
+DROP TABLE IF EXISTS kit CASCADE;
 DROP TABLE IF EXISTS bike CASCADE;
 DROP TABLE IF EXISTS accessory CASCADE;
 DROP TABLE IF EXISTS helmet CASCADE;
@@ -86,7 +87,7 @@ CREATE TABLE product
     type_id      bigint,
     price        decimal,
     currency_id  bigint,
-    rating_value bigint,
+    rating_value int,
     d_type       varchar(31) NOT NULL,
     created_at   timestamp,
     updated_at   timestamp
@@ -197,3 +198,10 @@ CREATE TABLE product_bike_frames
     constraint product_bike_frames_product_id_fkey
         foreign key (product_id) references product (id)
 );
+
+CREATE TABLE kit
+(
+    id             bigint PRIMARY KEY AUTO_INCREMENT
+);
+ALTER TABLE kit
+    ADD FOREIGN KEY (id) REFERENCES product (id);

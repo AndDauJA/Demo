@@ -1,17 +1,16 @@
 package com.mtb.demo.mapper;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.stream.Collectors;
-
 import com.mtb.demo.dto.BrandDto;
 import com.mtb.demo.dto.ProductDTO;
-import com.mtb.demo.entity.Brand;
 import com.mtb.demo.entity.Kit;
 import com.mtb.demo.entity.Product;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
@@ -21,8 +20,6 @@ public class ProductDtoMapper {
     private final BrandDtoMapper brandDtoMapper;
     private final ColorDtoMapper colorDtoMapper;
     private final GenderDtoMapper genderDtoMapper;
-
-
 
     public ProductDTO mapToProductDto(Product product) {
         BrandDto brandDto = brandDtoMapper.mapToBrandDto(product.getBrand());

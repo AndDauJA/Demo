@@ -1,19 +1,11 @@
 package com.mtb.demo.entity;
 
-import java.math.BigDecimal;
-import java.time.Instant;
-import java.util.LinkedHashSet;
-import java.util.Set;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.DiscriminatorType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinColumn;
@@ -27,6 +19,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
+import java.math.BigDecimal;
+import java.util.LinkedHashSet;
+import java.util.Set;
+
 @SuperBuilder(toBuilder = true)
 @NoArgsConstructor
 @Getter
@@ -34,11 +30,7 @@ import lombok.experimental.SuperBuilder;
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "d_type", discriminatorType = DiscriminatorType.STRING)
-public abstract class Product {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+public abstract class Product extends Auditable {
 
 	@Size(max = 255)
 	private String sku;
@@ -64,11 +56,7 @@ public abstract class Product {
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Currency currency;
 
-	private Long ratingValue;
-
-	private Instant createdAt;
-
-	private Instant updatedAt;
+	private int ratingValue;
 
 	@Builder.Default
 	@ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
@@ -90,9 +78,4 @@ public abstract class Product {
 			   joinColumns = @JoinColumn(name = "product_id"),
 			   inverseJoinColumns = @JoinColumn(name = "size_id"))
 	private Set<com.mtb.demo.entity.Size> productSizes = new LinkedHashSet<>();
-
-
-//	@Column(name = "d_type", nullable = false)
-//	@Size(max = 31)
-//	private String dType;
 }

@@ -1,4 +1,4 @@
-package com.mtb.demo.integration.domain;
+package com.mtb.demo.integration.common.domain;
 
 import lombok.Getter;
 import lombok.Setter;

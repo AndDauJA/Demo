@@ -5,8 +5,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>Products</title>
-<!--    <link rel="stylesheet" href="/static/css/style.css">-->
-<!--    <link rel="stylesheet" th:href="@{/css/style}">-->
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
 <div>
@@ -61,7 +60,7 @@
 
         <div class="row">
 
-            <div class="col-md-6">
+            <div class="col-md-2">
                 <div class="filter-wrapper">
                     <div class="filter-container">
 
@@ -220,32 +219,23 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="d-flex justify-content-end">
-                    <table class="table table table-striped w-100">
-
-                        <thead>
-                        <tr>
-                            <th scope="col">Id</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Brand</th>
-                            <th scope="col">Size</th>
-                            <th scope="col">Color</th>
-                            <th scope="col">Gender</th>
-                            <th></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr th:each="product, stat: ${productList}">
-                            <td th:text="${stat.count}">N/A</td>
-                            <td th:text="${product.name} ?: 'N/A'">Product Name</td>
-                            <td th:text="${product.toBrandStr()}?: 'N/A'">N/A</td>
-                            <td th:text="${product.toSizesStr()}?: 'N/A'">N/A</td>
-                            <td th:text="${product.toColorStr()}?: 'N/A'">N/A</td>
-                            <td th:text="${product.toGenderStr()}?: 'N/A'">N/A</td>
-                        </tr>
-                        </tbody>
-                    </table>
+            <div class="col">
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+                            <div th:each="product : ${productList}" class="col mb-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title" th:text="${product.name} ?: 'N/A'">Product Name</h5>
+                                        <p class="card-text">Brand: <span th:text="${product.toBrandStr()} ?: 'N/A'">N/A</span></p>
+                                        <p class="card-text">Size: <span th:text="${product.toSizesStr()} ?: 'N/A'">N/A</span></p>
+                                        <p class="card-text">Color: <span th:text="${product.toColorStr()} ?: 'N/A'">N/A</span></p>
+                                        <p class="card-text">Gender: <span th:text="${product.toGenderStr()} ?: 'N/A'">N/A</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

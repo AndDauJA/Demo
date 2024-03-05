@@ -15,8 +15,8 @@ spring:
       schema-locations: 'classpath:db/MTB mysql.sql'
       data-locations: 'classpath:db/MTB dml.sql'
       platform: mysql
-      #      mode: never  # use for production
-      mode: never
+      mode: never  # use for production
+#      mode: always
   jpa:
     hibernate:
       ddl-auto: validate

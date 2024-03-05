@@ -1,6 +1,5 @@
-package com.mtb.demo.integration.domain;
+package com.mtb.demo.integration.common.domain;
 
-import com.mtb.demo.integration.common.domain.IntegrationApi;
 import lombok.Getter;
 
 import java.util.ArrayList;
