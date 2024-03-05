@@ -8,11 +8,11 @@ import java.util.stream.Stream;
 
 import com.mtb.demo.dto.ProductDTO;
 import com.mtb.demo.dto.ProductFilterDto;
-import com.mtb.demo.entity.Kit;
 import com.mtb.demo.entity.Product;
 import com.mtb.demo.mapper.GenderDtoMapper;
 import com.mtb.demo.mapper.KitProductMapper;
 import com.mtb.demo.mapper.ProductDtoMapper;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -21,14 +21,13 @@ import org.springframework.stereotype.Service;
 public class KitService {
 
     private final ProductService productService;
-    private final KitProductMapper kitProductMapper;
     private final ProductDtoMapper productDtoMapper;
-    private final GenderDtoMapper genderDtoMapper;
 
+    @Transactional
     public List<ProductDTO> getProductByProductFilter(ProductFilterDto productFilterDto) {
 
-        final Collection<String> brandNameFilters=productFilterDto.getSelectedBrandNameFilter();
-        final Collection<String> genderFilters = productFilterDto.getSelectedGenderFilter();
+        final Collection<String> brandNameFilters = productFilterDto.selectedBrandNameFilter();
+        final Collection<String> genderFilters = productFilterDto.selectedGenderFilter();
 
         Collection<Product> filteredProductsByGenders = Collections.emptyList();
         Collection<Product> filteredProductsByBrandNames = Collections.emptyList();
@@ -52,6 +51,7 @@ public class KitService {
                 .collect(Collectors.toList());
     }
 
+    @Transactional
     public List<ProductDTO> getAllProducts() {
         List<Product> products = productService.getAllProducts();
         return products.stream()

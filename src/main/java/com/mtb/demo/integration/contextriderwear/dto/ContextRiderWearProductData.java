@@ -6,4 +6,5 @@ public record ContextRiderWearProductData(
         String type,
         String sku
 ) {
+
 }

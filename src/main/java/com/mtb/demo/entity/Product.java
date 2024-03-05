@@ -7,6 +7,8 @@ import java.util.Set;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.DiscriminatorColumn;
+import jakarta.persistence.DiscriminatorType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -31,6 +33,7 @@ import lombok.experimental.SuperBuilder;
 @Setter
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "d_type", discriminatorType = DiscriminatorType.STRING)
 public abstract class Product {
 
 	@Id
@@ -89,7 +92,7 @@ public abstract class Product {
 	private Set<com.mtb.demo.entity.Size> productSizes = new LinkedHashSet<>();
 
 
-	@Column(name = "d_type", nullable = false)
-	@Size(max = 31)
-	private String dType;
+//	@Column(name = "d_type", nullable = false)
+//	@Size(max = 31)
+//	private String dType;
 }

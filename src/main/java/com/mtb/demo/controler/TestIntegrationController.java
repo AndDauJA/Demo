@@ -1,6 +1,7 @@
 package com.mtb.demo.controler;
 
 import com.mtb.demo.integration.contextriderwear.dto.ContextRiderWearProductData;
+import com.mtb.demo.integration.contextriderwear.service.ApiService;
 import com.mtb.demo.integration.contextriderwear.service.ContextRiderWearService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,13 +19,17 @@ import java.util.List;
 public class TestIntegrationController {
 
     private final ContextRiderWearService contextRiderWearService;
+    private final ApiService apiService;
 
     @GetMapping("/test")
     public ResponseEntity<Void> test() {
         contextRiderWearService.getContextRiderWearClient()
                 .ifPresent(client -> {
                     final List<ContextRiderWearProductData> data = client.getApi().getProducts().data();
-                    data.forEach(product -> log.atInfo().log(product.toString()));
+                    data.forEach(product -> {
+                        log.atInfo().log(product.toString());
+                        apiService.saveApiToDb(product);
+                    });
                 });
 
         return ResponseEntity.ok().build();

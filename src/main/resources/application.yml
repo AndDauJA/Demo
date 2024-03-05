@@ -1,9 +1,9 @@
 spring:
   main:
     banner-mode: off
-#  profiles:
-#    include:
-#      - integration  #uncomment for integration
+  profiles:
+    include:
+      - integration  #uncomment for integration
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -16,7 +16,7 @@ spring:
       data-locations: 'classpath:db/MTB dml.sql'
       platform: mysql
       #      mode: never  # use for production
-      mode: always
+      mode: never
   jpa:
     hibernate:
       ddl-auto: validate
@@ -29,3 +29,4 @@ spring:
     web:
       pageable:
         default-page-size: 50
+
