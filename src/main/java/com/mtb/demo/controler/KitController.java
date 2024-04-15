@@ -40,4 +40,11 @@ public class KitController {
         return "product";
     }
 
+    @GetMapping("/search")
+    public String searchProductsByName(@RequestParam("name") String name, Model model) {
+        List<ProductDTO> products = kitService.searchProductsByName(name);
+        model.addAttribute("productList", products);
+        return "product";  // Assuming "product" is the view that displays the list of products
+    }
+
 }

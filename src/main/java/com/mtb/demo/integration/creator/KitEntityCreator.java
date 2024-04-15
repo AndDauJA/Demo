@@ -17,6 +17,7 @@ public class KitEntityCreator implements EntityCreator<Kit, ProductDomain> {
                 .description(domain.description())
                 .price(domain.price())
                 .ratingValue(domain.ratingValue())
+
                 .build();
     }
 }

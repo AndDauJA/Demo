@@ -22,9 +22,11 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     Page<Product> findByCurrencyIdIn(List<Integer> currencyIds, Pageable pageable);
 
     Optional<Product> findProductById(Long id);
+    @Query("SELECT p FROM Product p WHERE LOWER(p.name) LIKE LOWER(CONCAT('%', :name, '%'))")
+    List<Product> findByNameContainingIgnoreCase(@Param("name") String name);
 
     @Query("SELECT p FROM Product p"
-            + " JOIN FETCH p.productGenders g WHERE g.code IN :genders")
+            + " JOIN FETCH p.productGenders g WHERE :genders IS NULL OR g.code IN :genders")
     Collection<Product> findAllByProductGenders(@Param("genders") String... genders);
 
     //	@Query("SELECT p FROM Product p JOIN p.productGenders b WHERE b.code = :genders")
@@ -33,10 +35,23 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
             +" JOIN FETCH p.brand b WHERE b.name IN :brandNames")
     Collection<Product> findAllByProductBrandNames(@Param("brandNames") String... brandNames);
 
-    @Query("SELECT p FROM Product p JOIN FETCH p.productColors b WHERE b.code = :color")
-    Collection<Product> findAllByProductColor(Collection<String> color);
+    @Query("SELECT p FROM Product p" +
+            " JOIN FETCH p.productColors b WHERE b.code IN :colors")
+    Collection<Product> findAllByProductColorNames(@Param("colors") String... colors);
 
     List<Product> findAll();
 
     Page<Product> searchProductsByNameAndDescription(String name, String description, Pageable pageable);
+
+    @Query("SELECT DISTINCT p FROM Product p" +
+            " LEFT JOIN p.productGenders g" +
+            " LEFT JOIN p.brand b" +
+            " LEFT JOIN p.productColors c" +
+            " WHERE (:genders IS NULL OR g.code IN :genders)" +
+            " AND (:brandNames IS NULL OR b.name IN :brandNames)" +
+            " AND (:colors IS NULL OR c.code IN :colors)")
+    List<Product> findByMultipleCriteria(
+            @Param("brandNames") Collection<String> brandNames,
+            @Param("genders") Collection<String> genders,
+            @Param("colors") Collection<String> colors);
 }

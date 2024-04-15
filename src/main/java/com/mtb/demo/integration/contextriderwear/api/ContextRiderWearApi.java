@@ -7,9 +7,10 @@ import org.springframework.web.service.annotation.GetExchange;
 
 public interface ContextRiderWearApi {
 
-    @GetExchange("/products?sku=GRAV-BL-M")
-    ContextRiderWearProductResponse getProducts();
-
+//    @GetExchange("/products?sku=GRAV-BL-M")
+//    ContextRiderWearProductResponse getProducts();
+@GetExchange("/products")
+ContextRiderWearProductResponse getProducts();
     @GetExchange("/products/{product_id}/images")
     ContextRiderWearProductImagesResponse getProductImages(@PathVariable("product_id") String productId);
 }

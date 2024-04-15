@@ -1,10 +1,12 @@
 package com.mtb.demo.integration.contextriderwear.service;
 
 import com.mtb.demo.common.domain.ProductDomain;
+import com.mtb.demo.entity.Gender;
 import com.mtb.demo.entity.Kit;
 import com.mtb.demo.integration.contextriderwear.dto.ContextRiderWearProductData;
 import com.mtb.demo.integration.contextriderwear.mapper.ProductDataMapper;
 import com.mtb.demo.integration.creator.BrandEntityCreator;
+
 import com.mtb.demo.integration.creator.KitEntityCreator;
 import com.mtb.demo.integration.creator.VendorEntityCreator;
 import com.mtb.demo.repository.ProductRepository;
@@ -22,6 +24,7 @@ public class ContextRiderWearDataStoringService {
     private final BrandEntityCreator brandEntityCreator;
     private final VendorEntityCreator vendorEntityCreator;
 
+
     public void saveApiToDb(ContextRiderWearProductData contextRiderWearProductData) {
         final ProductDomain productDomain = productDataMapper.mapToDomain(contextRiderWearProductData);
 
@@ -36,6 +39,7 @@ public class ContextRiderWearDataStoringService {
         final Kit kit = kitEntityCreator.createFromDomain(productDomain);
         kit.setBrand(brandEntityCreator.createFromDomain(productDomain.brand()));
         kit.setVendor(vendorEntityCreator.createFromDomain(productDomain.vendor()));
+
         // TODO - do same for Type
         // TODO - do same for Currency
         return kit;

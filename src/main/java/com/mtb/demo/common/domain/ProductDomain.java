@@ -12,6 +12,7 @@ public record ProductDomain(
         String name,
         String description,
         BrandDomain brand,
+        GenderDomain gender,
         VendorDomain vendor,
         ProductType type,
         BigDecimal price,

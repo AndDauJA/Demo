@@ -25,9 +25,63 @@
 
 body {
     margin: 0;
-
     margin-bottom: 500px;
+
 }
+.search-input{
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 100px;
+    justify-content: center;
+
+}
+.serch-input{
+    border-radius: 50px;
+    width: 30%;
+}
+
+.card-container{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+
+}
+.table-img-container{
+    width: 200px;
+    height: 100%;
+
+}
+.card{
+    width: 100%;
+
+}
+.manu-img-container{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+
+}
+.column-image{
+    width: 200px;
+    margin: 50px;
+}
+ /*shriftas
+ /* Beautiful vibes */
+
+/*.text-font, .meniu-item {*/
+/*    font-family: 'Beautiful Vibes', sans-serif;*/
+/*    font-style: normal;*/
+/*    font-weight: 400;*/
+/*    font-size: 25px;*/
+/*    line-height: 114px;*/
+/*    !* identical to box height *!*/
+
+/*    color: #000000;*/
+
+/*}*/
+
+
+
 
 p {
     font-size: 15px;
@@ -39,6 +93,12 @@ p {
     margin-right: auto;
     padding-left: var(--spacing-1);
     padding-right: var(--spacing-1);
+    /*position: absolute;*/
+    /*width: 540px;*/
+    /*height: 316px;*/
+
+    background: linear-gradient(180deg, rgba(206, 73, 147, 0) 20.27%, rgba(206, 73, 147, 0.2) 78.09%), linear-gradient(180deg, rgba(238, 93, 108, 0) 29.38%, rgba(238, 93, 108, 0.3) 86.74%), linear-gradient(360deg, rgba(238, 175, 97, 0) 15.76%, rgba(238, 175, 97, 0.4) 100%), linear-gradient(180deg, rgba(251, 144, 98, 0.7) 0%, rgba(149, 85, 58, 0.7) 73.99%);
+
 }
 
 .page-title {
