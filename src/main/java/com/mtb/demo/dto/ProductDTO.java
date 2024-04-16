@@ -16,6 +16,7 @@ public class ProductDTO {
     private final Collection<BrandDto> brandNames;
     private final Collection<ColorDto> colors;
     private final Collection<GenderDto> genders;
+    private final Collection<PriceDto> price;
 
 
     public String getName() {
@@ -36,6 +37,10 @@ public class ProductDTO {
 
     public Collection<GenderDto> getGenders() {
         return genders;
+    }
+
+    public Collection<PriceDto> getPrice() {
+        return price;
     }
 
     /**
@@ -59,4 +64,6 @@ public class ProductDTO {
     public String toGenderStr() {
         return JoinListNamesUtil.joinListNamesOf(genders, GenderDto::getCode);
     }
+
+
 }

@@ -28,6 +28,20 @@ body {
     margin-bottom: 500px;
 
 }
+.manu-img-name-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+@font-face {
+    font-family: 'Beautiful Vibes';
+    src: url('C:/Users/daujo/AppData/Local/Microsoft/Windows/Fonts/BeautifulVibes-Regular.ttf') format('truetype');
+}
+.manu-img-name{
+    text-align: center;
+    font-family: 'Beautiful Vibes', sans-serif;
+}
 .search-input{
     display: flex;
     flex-direction: row;
@@ -63,7 +77,34 @@ body {
 }
 .column-image{
     width: 200px;
-    margin: 50px;
+    margin: 10px 50px 50px 50px;
+}
+.cloth-size{
+
+
+}
+.rounded-corners{
+    border-radius: 15px;
+    background-color: rgba(250, 235, 215, 0.75);
+
+}
+.star-rating span {
+    display: inline-block;
+    width: 50px; /* Nustatykite tinkamą plotį, priklausomai nuo paveiksliuko dydžio */
+    /*height: 10px; !* Nustatykite tinkamą aukštį *!*/
+    background: url("/images/star-icon1.png") repeat-x;
+    text-indent: -9999px; /* Paslėpkite tekstą */
+
+}
+.form-check-input{
+    margin-left: 5px;
+}
+.btn-filter-apply{
+    margin-left: 50px;
+}
+
+form{
+    align-items: center;
 }
  /*shriftas
  /* Beautiful vibes */
