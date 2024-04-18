@@ -12,43 +12,49 @@
 <body>
 <div>
     <div class="container ">
+        <img src="/images/Vector.png" alt="Vector Image" class="top-image">
         <header class="main-header row">
 
             <div class="main-header-wrapper">
                 <div class="logo-wrapper">
-                    <img src="DemoLogo.svg" alt="Demo Logo">
+                    <img src="/images/logo%20MBK%202.png" alt="Demo Logo">
+
                 </div>
-
-                <nav class="navigation-wrapper">
-                    <ul class="menu-list">
-                        <li class="meniu-item">
-                            <a class="menu-link" href="indexdemo">Home</a>
-                        </li>
-                        <li class="meniu-item">
-                            <a class="menu-link" href="product">Product</a>
-                        </li>
-                        <li class="meniu-item">
-                            <a class="menu-link" href="#">Bikes</a>
-                        </li>
-                        <li class="meniu-item">
-                            <a class="menu-link" href="#">Wheels & Tyres</a>
-                        </li>
-                        <li class="meniu-item">
-                            <a class="menu-link" href="#">Bike parts</a>
-                        </li>
-                        <li class="meniu-item">
-                            <a class="menu-link" href="#">Footwear</a>
-                        </li>
-                        <li class="meniu-item">
-                            <a class="menu-link" href="#">Helmets & Protection</a>
-                        </li>
-                        <li class="meniu-item">
-                            <a class="menu-link" href="#">Accessories</a>
-                        </li>
-                    </ul>
-
-                </nav>
+                <div>
+                    <p>Location</p>
+                </div>
             </div>
+
+            <!--                <nav class="navigation-wrapper">-->
+            <!--                    <ul class="menu-list">-->
+            <!--                        <li class="meniu-item">-->
+            <!--                            <a class="menu-link" href="indexdemo">Home</a>-->
+            <!--                        </li>-->
+            <!--                        <li class="meniu-item">-->
+            <!--                            <a class="menu-link" href="product">Product</a>-->
+            <!--                        </li>-->
+            <!--                        <li class="meniu-item">-->
+            <!--                            <a class="menu-link" href="#">Bikes</a>-->
+            <!--                        </li>-->
+            <!--                        <li class="meniu-item">-->
+            <!--                            <a class="menu-link" href="#">Wheels & Tyres</a>-->
+            <!--                        </li>-->
+            <!--                        <li class="meniu-item">-->
+            <!--                            <a class="menu-link" href="#">Bike parts</a>-->
+            <!--                        </li>-->
+            <!--                        <li class="meniu-item">-->
+            <!--                            <a class="menu-link" href="#">Footwear</a>-->
+            <!--                        </li>-->
+            <!--                        <li class="meniu-item">-->
+            <!--                            <a class="menu-link" href="#">Helmets & Protection</a>-->
+            <!--                        </li>-->
+            <!--                        <li class="meniu-item">-->
+            <!--                            <a class="menu-link" href="#">Accessories</a>-->
+            <!--                        </li>-->
+            <!--                    </ul>-->
+
+            <!--                </nav>-->
+
 
         </header>
         <div class="top-part">
@@ -87,15 +93,29 @@
                 </button>
                 <div class="btn-outline-unsuccess">3</div>
             </div>
-            <div class="btn-delete"> Delete filter</div>
-            <div>3</div>
-            <div>4</div>
-            <div>5</div>
+            <div class="btn-delete">
+                <a href="/product" class=" btn-outline ">Delete filter</a>
+                </div>
+            <div class="filter-results">Result: 3</div>
+
+            <form class="filter-sorting-form">
+                <label for="fruit"></label>
+                <select class="filter-sorting" id="fruit" name="fruit">
+                    <option class="filter-sortin-item" value="A-Z">By name (A-Z)</option>
+                    <option class="filter-sortin-item" value="Z-A">By name (Z-A)</option>
+                    <option class="filter-sortin-item" value="price">By price</option>
+                    <option class="filter-sortin-item" value="date">By date</option>
+                    <!-- Add more options here as needed -->
+                </select>
+
+            </form>
+
+            <div class="filter-img-container">
+                <img class="filter-img" src="/images/filter.png">
+            </div>
         </div>
         <div class="row filter-wrapper">
-            <div>
-                <img th:url="'www.figma.com/file/blh1jb3jQphslHzz5Kw9Dt/Kalnu-dviraciai?type=design&node-id=107-1143&mode=design&t=QgIrHT6RZAhE0vsG-4'">
-            </div>
+
 
             <div class=" check-box-container">
                 <div class="">
@@ -108,8 +128,8 @@
                                         <input class="form-check-input" type="radio" name="selectedRatingFilter"
                                                value="5"
                                                id="5">
-                                        <label class="form-check-label star-rating" for="5">
-                                            <span data-stars="5">*****</span> 5
+                                        <label class="form-check-label star-rating " for="5">
+                                            <span class="" data-stars="5">*****</span> 5
                                         </label>
 
                                     </li>
@@ -379,9 +399,9 @@
 
         starSpans.forEach(function (span) {
             var stars = span.getAttribute('data-stars');
-            var starWidth = 20; // Priklausomai nuo žvaigždutės paveiksliuko pločio
+            var starWidth = 10; // Priklausomai nuo žvaigždutės paveiksliuko pločio
             span.style.width = starWidth * stars + 'px';
-            span.style.backgroundSize = `${starWidth}px 20px`;
+            span.style.backgroundSize = `${starWidth}px 10px`;
         });
     });
 </script>

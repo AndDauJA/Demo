@@ -19,6 +19,12 @@
     --color-success: var(--color-secondary);
 }
 
+h2 {
+    font-size: 15px;
+    font-weight: bold;
+
+}
+
 *, *::before, *::after {
     box-sizing: border-box;
 }
@@ -27,6 +33,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
 
 }
 
@@ -43,6 +50,7 @@ body {
     align-content: center;
 }
 
+
 @font-face {
     font-family: 'Beautiful Vibes';
     src: url('/fonts/Beautifulvibes-owvLz.woff2') format('woff2'),
@@ -52,6 +60,86 @@ body {
 .manu-img-name {
     text-align: center;
     font-family: 'Beautiful Vibes', sans-serif;
+}
+
+.container {
+    max-width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--spacing-1);
+    padding-right: var(--spacing-1);
+    /*position: absolute;*/
+    /*width: 540px;*/
+    /*height: 316px;*/
+
+    background-image: linear-gradient(180deg, rgba(206, 73, 147, 0) 20.27%, rgba(206, 73, 147, 0.2) 78.09%),
+    linear-gradient(180deg, rgba(238, 93, 108, 0) 29.38%, rgba(238, 93, 108, 0.3) 86.74%),
+    linear-gradient(360deg, rgba(238, 175, 97, 0) 15.76%, rgba(238, 175, 97, 0.4) 100%),
+    linear-gradient(180deg, rgba(251, 144, 98, 0.7) 0%, rgba(149, 85, 58, 0.7) 73.99%);
+    background-repeat: no-repeat;
+}
+
+.top-image {
+    position: absolute;
+    top: 1200px; /* Center the image vertically */
+    left: 1200px; /* Center the image horizontally */
+    transform: translate(-50%, -50%); /* Offset the image by half its width and height to truly center it */
+    width: 600px; /* Adjust width as necessary */
+    height: auto; /* Maintain aspect ratio */
+
+}
+
+
+.page-title {
+    font-size: 100px;
+    margin-top: 0;
+    margin-bottom: 23px;
+    line-height: 1.05;
+}
+
+.section-title {
+    margin-top: 0;
+    font-size: 172px;
+}
+
+.main-header {
+
+}
+
+.main-header-wrapper, .logo-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 50px;
+    font-family: 'Beautiful Vibes', sans-serif;
+    font-size: 32px;
+}
+
+
+.navigation-wrapper {
+    display: flex;
+    align-items: center;
+    column-gap: 15px;
+}
+
+.menu-list {
+    list-style-type: none;
+    padding-left: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.menu-link {
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.menu-link:hover {
+    opacity: .8;
 }
 
 .search-input-form {
@@ -70,6 +158,7 @@ body {
     font-size: 18px;
     font-weight: bold;
     color: black;
+
 }
 
 .card-container {
@@ -83,12 +172,19 @@ body {
 .table-img-container {
     width: 200px;
     height: 100%;
+    /*border-radius: 15px 0 0 15px ;*/
 
 }
 
 .card {
     width: 100%;
+    border-radius: 0 15px 15px 0;
 
+}
+
+.card-title {
+    font-size: 20px;
+    font-weight: bolder;
 }
 
 .card-text {
@@ -118,6 +214,7 @@ body {
 }
 
 .check-box-container {
+    height: 1100px;
     margin-top: 20px;
     display: flex;
     flex-direction: column;
@@ -150,16 +247,48 @@ body {
     font-size: 14px;
     border-radius: 0;
 }
-.btn-delete{
+
+.btn-delete {
     width: 100px;
     height: 40px;
     border: 1px solid red;
-
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 14px;
     border-radius: 50px;
+text-decoration: none;
+}
+
+.filter-sorting {
+background-color: white;
+    height: 40px;
+    width: 200px;
+    border-width: 0;
+    border-radius: 5px;
+}
+
+.filter-sorting-form {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-left: 350px;
+    z-index: 5;
+
+}
+.filter-results {
+    padding-left: 20px;
+    font-weight: bold;
+}
+.filter-img-container{
+    padding: 0;
+    margin: 0;
+
+}
+.filter-img{
+    padding-top: 2px;
+    height: 53px;
+    width: 120px;
 }
 
 .filter-wrapper {
@@ -169,7 +298,7 @@ body {
 .table-container {
 
     margin-top: 20px;
-    max-width: 80%;
+    max-width: 90%;
 }
 
 
@@ -181,6 +310,7 @@ body {
 .clothing-options {
     padding-left: 0;
 
+
 }
 
 ul {
@@ -189,6 +319,10 @@ ul {
 
 li {
     list-style-type: none;
+}
+
+.form-check-label {
+    font-size: 12px;
 }
 
 .rounded-corners {
@@ -200,9 +334,9 @@ li {
 
 .star-rating span {
     display: inline-block;
-    width: 50px; /* Nustatykite tinkamą plotį, priklausomai nuo paveiksliuko dydžio */
+    width: 10px; /* Nustatykite tinkamą plotį, priklausomai nuo paveiksliuko dydžio */
     /*height: 10px; !* Nustatykite tinkamą aukštį *!*/
-    background: url("/images/star-icon1.png") repeat-x;
+    background: url("/images/star.png") repeat-x;
     text-indent: -9999px; /* Paslėpkite tekstą */
 
 }
@@ -212,7 +346,19 @@ li {
 }
 
 .btn-filter-apply {
+    z-index: 5;
     margin-left: 50px;
+}
+.btn-outline-success, .btn-outline-secondary, .search-input {
+    z-index: 5;
+}
+.btn-outline{
+    text-decoration: none;
+    color: black;
+}
+.btn-outline:hover{
+    text-decoration: none;
+    color: black;
 }
 
 form {
@@ -235,64 +381,3 @@ form {
 /*}*/
 
 
-.container {
-    max-width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: var(--spacing-1);
-    padding-right: var(--spacing-1);
-    /*position: absolute;*/
-    /*width: 540px;*/
-    /*height: 316px;*/
-
-    background: linear-gradient(180deg, rgba(206, 73, 147, 0) 20.27%, rgba(206, 73, 147, 0.2) 78.09%), linear-gradient(180deg, rgba(238, 93, 108, 0) 29.38%, rgba(238, 93, 108, 0.3) 86.74%), linear-gradient(360deg, rgba(238, 175, 97, 0) 15.76%, rgba(238, 175, 97, 0.4) 100%), linear-gradient(180deg, rgba(251, 144, 98, 0.7) 0%, rgba(149, 85, 58, 0.7) 73.99%);
-
-}
-
-.page-title {
-    font-size: 100px;
-    margin-top: 0;
-    margin-bottom: 23px;
-    line-height: 1.05;
-}
-
-.section-title {
-    margin-top: 0;
-    font-size: 172px;
-}
-
-.main-header {
-    background-color: rgba(13, 131, 182, 0.77);
-}
-
-.main-header-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    column-gap: 50px;
-}
-
-.navigation-wrapper {
-    display: flex;
-    align-items: center;
-    column-gap: 15px;
-}
-
-.menu-list {
-    list-style-type: none;
-    padding-left: 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-}
-
-.menu-link {
-    padding: 10px;
-    color: white;
-    text-decoration: none;
-    display: inline-block;
-}
-
-.menu-link:hover {
-    opacity: .8;
-}
