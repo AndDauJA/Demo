@@ -68,6 +68,7 @@ body {
     margin-right: auto;
     padding-left: var(--spacing-1);
     padding-right: var(--spacing-1);
+    min-height: 170vh;
     /*position: absolute;*/
     /*width: 540px;*/
     /*height: 316px;*/
@@ -81,12 +82,13 @@ body {
 
 .top-image {
     position: absolute;
-    top: 1200px; /* Center the image vertically */
-    left: 1200px; /* Center the image horizontally */
-    transform: translate(-50%, -50%); /* Offset the image by half its width and height to truly center it */
+    /*top: 1200px; !* Center the image vertically *!*/
+    margin-left: 1200px; /* Center the image horizontally */
+   margin-top: 500px;
+    /*transform: translate(-50%, -50%); !* Offset the image by half its width and height to truly center it *!*/
     width: 600px; /* Adjust width as necessary */
-    height: auto; /* Maintain aspect ratio */
-
+    /*height: auto; !* Maintain aspect ratio *!*/
+    z-index: 0;
 }
 
 
